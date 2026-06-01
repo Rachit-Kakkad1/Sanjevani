@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏥 Sanjeevani
+# 🏥 Sanjevani
 
 ### *AI-Powered Healthcare Billing Transparency Platform*
 
