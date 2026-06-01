@@ -1,11 +1,11 @@
 <div align="center">
 
-# 🏥 Sanjeevani
+# 🏥 Sanjevani
 
 ### *AI-Powered Healthcare Billing Transparency Platform*
 
-[![HealthTech](https://img.shields.io/badge/Track-HealthTech-00C853?style=for-the-badge&logo=health&logoColor=white)](https://github.com/Rachit-Kakkad1/Sanjeevani)
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit-4285F4?style=for-the-badge)](https://sanjeevani-healthcare.vercel.app)
+[![HealthTech](https://img.shields.io/badge/Track-HealthTech-00C853?style=for-the-badge&logo=health&logoColor=white)](https://github.com/Rachit-Kakkad1/Sanjevani)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit-4285F4?style=for-the-badge)](https://sanjevani-healthcare.vercel.app)
 
 <br/>
 
@@ -18,11 +18,11 @@
 
 <br/>
 
-**Sanjeevani** (संजीवनी) — *the life-giving herb from ancient Indian mythology* — is an AI-powered platform that fights medical billing fraud by automatically scanning hospital bills, cross-referencing with **1,995 official CGHS government rates**, and exposing overcharges that patients would never catch on their own.
+**Sanjevani** (संजीवनी) — *the life-giving herb from ancient Indian mythology* — is an AI-powered platform that fights medical billing fraud by automatically scanning hospital bills, cross-referencing with **1,995 official CGHS government rates**, and exposing overcharges that patients would never catch on their own.
 
 <br/>
 
-[🌐 Live Demo](https://sanjeevani-healthcare.vercel.app) · [📖 API Docs](https://sanjeevani-backend-blh0.onrender.com/health) · [🤖 OCR Service](https://rachit-ai-sanjeevani-ocr.hf.space/docs) · [🐛 Report Bug](https://github.com/Rachit-Kakkad1/Sanjeevani/issues) · [✨ Request Feature](https://github.com/Rachit-Kakkad1/Sanjeevani/issues)
+[🌐 Live Demo](https://sanjevani-healthcare.vercel.app) · [📖 API Docs](https://sanjevani-backend-blh0.onrender.com/health) · [🤖 OCR Service](https://rachit-ai-sanjevani-ocr.hf.space/docs) · [🐛 Report Bug](https://github.com/Rachit-Kakkad1/Sanjevani/issues) · [✨ Request Feature](https://github.com/Rachit-Kakkad1/Sanjevani/issues)
 
 </div>
 
@@ -69,7 +69,7 @@
 
 ```
 ┌─────────────────────────┐
-│   Before Sanjeevani     │
+│   Before Sanjevani     │
 │                         │
 │   MRI Brain:  ₹12,500   │
 │   CT Scan:    ₹14,000   │
@@ -77,7 +77,7 @@
 │   ─────────────────     │
 │   Total:      ₹27,300   │
 │                         │
-│   After Sanjeevani      │
+│   After Sanjevani      │
 │                         │
 │   Fair Rate:  ₹10,350   │
 │   Overcharge: ₹16,950   │
@@ -93,7 +93,7 @@
 
 ## 💡 Our Solution
 
-**Sanjeevani** is a 3-tier AI-powered platform that:
+**Sanjevani** is a 3-tier AI-powered platform that:
 
 | Step | Action | Technology |
 |:---:|:---|:---|
@@ -286,8 +286,8 @@ MongoDB          # Database (or use Atlas)
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/Rachit-Kakkad1/Sanjeevani.git
-cd Sanjeevani
+git clone https://github.com/Rachit-Kakkad1/Sanjevani.git
+cd Sanjevani
 ```
 
 ### 2️⃣ Start the Backend
@@ -330,13 +330,13 @@ npm run dev             # Starts on port 5173
 
 ## 🌐 Deployment
 
-Sanjeevani is deployed across three cloud platforms for reliability and performance:
+Sanjevani is deployed across three cloud platforms for reliability and performance:
 
 | Service | Platform | URL | Status |
 |:---|:---|:---|:---:|
-| 🌐 **Frontend** | Vercel | [sanjeevani-healthcare.vercel.app](https://sanjeevani-healthcare.vercel.app) | ✅ Live |
-| ⚙️ **Backend** | Render | [sanjeevani-backend-blh0.onrender.com](https://sanjeevani-backend-blh0.onrender.com) | ✅ Live |
-| 🤖 **OCR Service** | HF Spaces | [rachit-ai-sanjeevani-ocr.hf.space](https://rachit-ai-sanjeevani-ocr.hf.space) | ✅ Live |
+| 🌐 **Frontend** | Vercel | [sanjevani-healthcare.vercel.app](https://sanjevani-healthcare.vercel.app) | ✅ Live |
+| ⚙️ **Backend** | Render | [sanjevani-backend-blh0.onrender.com](https://sanjevani-backend-blh0.onrender.com) | ✅ Live |
+| 🤖 **OCR Service** | HF Spaces | [rachit-ai-sanjevani-ocr.hf.space](https://rachit-ai-sanjevani-ocr.hf.space) | ✅ Live |
 
 ---
 
@@ -424,7 +424,7 @@ file: <image.png>
 ## 🗂️ Project Structure
 
 ```
-Sanjeevani/
+Sanjevani/
 ├── 🌐 frontend/                    # React 19 + Vite 6
 │   ├── src/
 │   │   ├── components/             # Reusable UI components
@@ -511,7 +511,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 👥 Team
 
-Built with ❤️ by **Team Sanjeevani**.
+Built with ❤️ by **Team Sanjevani**.
 
 | | Name | Role | Focus Areas |
 |:---:|:---|:---|:---|
@@ -544,7 +544,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 Made with 🫀 for India's healthcare transparency
 
-[![GitHub Stars](https://img.shields.io/github/stars/Rachit-Kakkad1/Sanjeevani?style=social)](https://github.com/Rachit-Kakkad1/Sanjeevani)
-[![GitHub Forks](https://img.shields.io/github/forks/Rachit-Kakkad1/Sanjeevani?style=social)](https://github.com/Rachit-Kakkad1/Sanjeevani/fork)
+[![GitHub Stars](https://img.shields.io/github/stars/Rachit-Kakkad1/Sanjevani?style=social)](https://github.com/Rachit-Kakkad1/Sanjevani)
+[![GitHub Forks](https://img.shields.io/github/forks/Rachit-Kakkad1/Sanjevani?style=social)](https://github.com/Rachit-Kakkad1/Sanjevani/fork)
 
 </div>

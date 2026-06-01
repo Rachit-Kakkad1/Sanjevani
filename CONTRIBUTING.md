@@ -1,10 +1,10 @@
-# 🤝 Contributing to Sanjeevani
+# 🤝 Contributing to Sanjevani
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![First Timers](https://img.shields.io/badge/first--timers-welcome-blueviolet?style=flat-square)](https://www.firsttimersonly.com/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-FE5196?style=flat-square&logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org/)
 
-Thank you for your interest in contributing to **Sanjeevani**! Every contribution matters — whether it's fixing a typo, improving documentation, or building new features. This guide will help you get started.
+Thank you for your interest in contributing to **Sanjevani**! Every contribution matters — whether it's fixing a typo, improving documentation, or building new features. This guide will help you get started.
 
 ---
 

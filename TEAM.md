@@ -1,17 +1,17 @@
 <div align="center">
 
-# 👥 Team Sanjeevani
+# 👥 Team Sanjevani
 
 ### *Built by Builders*
 
-[![HealthTech](https://img.shields.io/badge/Track-HealthTech-00C853?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjeevani)
-[![Team Size](https://img.shields.io/badge/Team-2_Builders-7C3AED?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjeevani)
+[![HealthTech](https://img.shields.io/badge/Track-HealthTech-00C853?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjevani)
+[![Team Size](https://img.shields.io/badge/Team-2_Builders-7C3AED?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjevani)
 
 <br/>
 
 > *"No patient should ever be overcharged for healthcare without knowing it."*
 
-We're not just coders — we're **builders** on a mission to bring transparency to India's healthcare billing system. **Sanjeevani** was born from the frustration of seeing patients blindly pay inflated hospital bills with no way to verify if they were being overcharged. We decided to change that.
+We're not just coders — we're **builders** on a mission to bring transparency to India's healthcare billing system. **Sanjevani** was born from the frustration of seeing patients blindly pay inflated hospital bills with no way to verify if they were being overcharged. We decided to change that.
 
 </div>
 
@@ -37,7 +37,7 @@ We're not just coders — we're **builders** on a mission to bring transparency 
 
 <br/>
 
-*The engine behind Sanjeevani's entire technical stack — from the first `npm init` to production deployment across 3 cloud platforms.*
+*The engine behind Sanjevani's entire technical stack — from the first `npm init` to production deployment across 3 cloud platforms.*
 
 <br/>
 
@@ -81,13 +81,13 @@ We're not just coders — we're **builders** on a mission to bring transparency 
 
 <br/>
 
-*The strategic mind that shaped Sanjeevani's vision — from problem framing to pitch deck, ensuring every feature serves a real patient need.*
+*The strategic mind that shaped Sanjevani's vision — from problem framing to pitch deck, ensuring every feature serves a real patient need.*
 
 <br/>
 
 | 🔧 Domain | Contribution |
 |:---|:---|
-| 🎤 **Pitch Deck & Presentation** | Crafted the compelling narrative that brings Sanjeevani to life |
+| 🎤 **Pitch Deck & Presentation** | Crafted the compelling narrative that brings Sanjevani to life |
 | 📋 **Product Strategy** | Defined the product roadmap and feature priorities |
 | 🏥 **HealthTech Track Alignment** | Ensured alignment with HealthTech track requirements |
 | 📖 **User Story Design** | Mapped patient journeys and user flows |
@@ -260,7 +260,7 @@ No bill data stored permanently — process and discard
 
 ## 🙏 Acknowledgments
 
-We couldn't have built Sanjeevani without standing on the shoulders of giants:
+We couldn't have built Sanjevani without standing on the shoulders of giants:
 
 <table>
 <tr>
@@ -309,11 +309,11 @@ Backend hosting
 </tr>
 </table>
 
-And special thanks to the entire **open-source community** — React, Node.js, Express, MongoDB, FastAPI, PyTorch, Fuse.js, Framer Motion, Recharts, and the countless other projects that made Sanjeevani possible.
+And special thanks to the entire **open-source community** — React, Node.js, Express, MongoDB, FastAPI, PyTorch, Fuse.js, Framer Motion, Recharts, and the countless other projects that made Sanjevani possible.
 
 ---
 
-## 🌟 Why Sanjeevani?
+## 🌟 Why Sanjevani?
 
 <table>
 <tr>
@@ -362,6 +362,6 @@ And special thanks to the entire **open-source community** — React, Node.js, E
 
 <br/>
 
-[![Star This Repo](https://img.shields.io/badge/⭐_Star_This_Repo-FFD700?style=for-the-badge&logo=github&logoColor=black)](https://github.com/Rachit-Kakkad1/Sanjeevani)
+[![Star This Repo](https://img.shields.io/badge/⭐_Star_This_Repo-FFD700?style=for-the-badge&logo=github&logoColor=black)](https://github.com/Rachit-Kakkad1/Sanjevani)
 
 </div>

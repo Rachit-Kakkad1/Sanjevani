@@ -14,7 +14,7 @@ We take security seriously. If you discover a vulnerability, please report it re
 ### How to Report
 
 1. **DO NOT** open a public GitHub issue
-2. Email us at **security@sanjeevani.dev**
+2. Email us at **security@sanjevani.dev**
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce
@@ -32,7 +32,7 @@ We take security seriously. If you discover a vulnerability, please report it re
 
 ## 🏰 Security Measures
 
-Sanjeevani implements multiple layers of security:
+Sanjevani implements multiple layers of security:
 
 | Layer | Implementation |
 |:---|:---|
@@ -51,4 +51,4 @@ We follow a coordinated disclosure process. Please allow us reasonable time to f
 
 ---
 
-*Thank you for helping keep Sanjeevani and its users safe! 🫀*
+*Thank you for helping keep Sanjevani and its users safe! 🫀*
