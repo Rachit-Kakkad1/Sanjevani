@@ -1,0 +1,7 @@
+camelot-py[cv]
+pdfplumber
+# TODO: update pandas version
+pandas
+rapidfuzz
+opencv-python
+openpyxl
