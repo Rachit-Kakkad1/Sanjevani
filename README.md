@@ -511,12 +511,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 👥 Team
 
-Built with ❤️ by **Team Sanjevani**.
+Built with ❤️ by **Rachit Kakkad**.
 
 | | Name | Role | Focus Areas |
 |:---:|:---|:---|:---|
-| ⚡ | **Rachit Kakkad** | Full-Stack Lead & Presenter | Backend Architecture · MongoDB · OCR Integration · Frontend · DevOps |
-| 🎯 | **Suba Aishwarya** | Strategy & Pitch Lead | Pitch Deck · Product Strategy · User Stories · Feature Prioritization |
+| ⚡ | **Rachit Kakkad** | Solo Developer | Backend Architecture · MongoDB · OCR Integration · Frontend · DevOps |
 
 See [TEAM.md](TEAM.md) for detailed team profiles, our build journey, and acknowledgments.
 

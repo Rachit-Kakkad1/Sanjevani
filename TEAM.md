@@ -1,11 +1,11 @@
 <div align="center">
 
-# 👥 Team Sanjevani
+# 👥 Sanjevani
 
 ### *Built by Builders*
 
 [![HealthTech](https://img.shields.io/badge/Track-HealthTech-00C853?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjevani)
-[![Team Size](https://img.shields.io/badge/Team-2_Builders-7C3AED?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjevani)
+[![Team Size](https://img.shields.io/badge/Team-Solo_Developer-7C3AED?style=for-the-badge)](https://github.com/Rachit-Kakkad1/Sanjevani)
 
 <br/>
 
@@ -19,14 +19,11 @@ We're not just coders — we're **builders** on a mission to bring transparency 
 
 ## 🧑‍💻 The Builders
 
-<table>
-<tr>
-
-<td align="center" width="50%">
+<div align="center">
 
 <br/>
 
-<img src="https://img.shields.io/badge/⚡-Full--Stack_Lead_&_Presenter-00E5A0?style=for-the-badge&labelColor=1A1A2E" alt="role"/>
+<img src="https://img.shields.io/badge/⚡-Solo_Developer-00E5A0?style=for-the-badge&labelColor=1A1A2E" alt="role"/>
 
 <br/><br/>
 
@@ -64,54 +61,7 @@ We're not just coders — we're **builders** on a mission to bring transparency 
 
 <br/>
 
-</td>
-
-<td align="center" width="50%">
-
-<br/>
-
-<img src="https://img.shields.io/badge/🎯-Strategy_&_Pitch_Lead-A855F7?style=for-the-badge&labelColor=1A1A2E" alt="role"/>
-
-<br/><br/>
-
-### Suba Aishwarya
-
-[![GitHub](https://img.shields.io/badge/GitHub-@SubaAishwarya-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/)
-
-<br/>
-
-*The strategic mind that shaped Sanjevani's vision — from problem framing to pitch deck, ensuring every feature serves a real patient need.*
-
-<br/>
-
-| 🔧 Domain | Contribution |
-|:---|:---|
-| 🎤 **Pitch Deck & Presentation** | Crafted the compelling narrative that brings Sanjevani to life |
-| 📋 **Product Strategy** | Defined the product roadmap and feature priorities |
-| 🏥 **HealthTech Track Alignment** | Ensured alignment with HealthTech track requirements |
-| 📖 **User Story Design** | Mapped patient journeys and user flows |
-| 🎯 **Feature Prioritization** | Drove MVP scoping and impact-driven feature selection |
-
-<br/>
-
-**Skill Arsenal:**
-
-![Strategy](https://img.shields.io/badge/Product_Strategy-FF6B35?style=flat-square&logo=target&logoColor=white)
-![Pitching](https://img.shields.io/badge/Pitch_Design-E91E63?style=flat-square&logo=canva&logoColor=white)
-![UX](https://img.shields.io/badge/User_Stories-4CAF50?style=flat-square&logo=storybook&logoColor=white)
-![Research](https://img.shields.io/badge/Market_Research-2196F3?style=flat-square&logo=google-scholar&logoColor=white)
-![Healthcare](https://img.shields.io/badge/HealthTech-00C853?style=flat-square&logo=health&logoColor=white)
-![Planning](https://img.shields.io/badge/Roadmapping-7C3AED?style=flat-square&logo=notion&logoColor=white)
-![Presentation](https://img.shields.io/badge/Storytelling-FF9800?style=flat-square&logo=slides&logoColor=white)
-![Analytics](https://img.shields.io/badge/Impact_Analysis-009688?style=flat-square&logo=analytics&logoColor=white)
-
-<br/>
-
-</td>
-
-</tr>
-</table>
+</div>
 
 ---
 
