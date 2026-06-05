@@ -5,7 +5,7 @@
 ### *AI-Powered Healthcare Billing Transparency Platform*
 
 [![HealthTech](https://img.shields.io/badge/Track-HealthTech-00C853?style=for-the-badge&logo=health&logoColor=white)](https://github.com/Rachit-Kakkad1/Sanjevani)
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit-4285F4?style=for-the-badge)](https://sanjevani-healthcare.vercel.app)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit-4285F4?style=for-the-badge)](https://sanjeevani-healthcare.vercel.app)
 
 <br/>
 
@@ -22,7 +22,7 @@
 
 <br/>
 
-[🌐 Live Demo](https://sanjevani-healthcare.vercel.app) · [📖 API Docs](https://sanjevani-backend-blh0.onrender.com/health) · [🤖 OCR Service](https://rachit-ai-sanjevani-ocr.hf.space/docs) · [🐛 Report Bug](https://github.com/Rachit-Kakkad1/Sanjevani/issues) · [✨ Request Feature](https://github.com/Rachit-Kakkad1/Sanjevani/issues)
+[🌐 Live Demo](https://sanjeevani-healthcare.vercel.app) · [📖 API Docs](https://sanjeevani-backend-blh0.onrender.com/health) · [🤖 OCR Service](https://rachit-ai-sanjevani-ocr.hf.space/docs) · [🐛 Report Bug](https://github.com/Rachit-Kakkad1/Sanjevani/issues) · [✨ Request Feature](https://github.com/Rachit-Kakkad1/Sanjevani/issues)
 
 </div>
 
@@ -334,8 +334,8 @@ Sanjevani is deployed across three cloud platforms for reliability and performan
 
 | Service | Platform | URL | Status |
 |:---|:---|:---|:---:|
-| 🌐 **Frontend** | Vercel | [sanjevani-healthcare.vercel.app](https://sanjevani-healthcare.vercel.app) | ✅ Live |
-| ⚙️ **Backend** | Render | [sanjevani-backend-blh0.onrender.com](https://sanjevani-backend-blh0.onrender.com) | ✅ Live |
+| 🌐 **Frontend** | Vercel | [sanjeevani-healthcare.vercel.app](https://sanjeevani-healthcare.vercel.app) | ✅ Live |
+| ⚙️ **Backend** | Render | [sanjeevani-backend-blh0.onrender.com](https://sanjeevani-backend-blh0.onrender.com) | ✅ Live |
 | 🤖 **OCR Service** | HF Spaces | [rachit-ai-sanjevani-ocr.hf.space](https://rachit-ai-sanjevani-ocr.hf.space) | ✅ Live |
 
 ---
