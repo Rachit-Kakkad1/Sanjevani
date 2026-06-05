@@ -5,7 +5,6 @@ yarn-error.log
 dist/
 .cache/
 coverage/
-package-lock.json
 
 # Python
 venv/
