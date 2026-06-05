@@ -14,9 +14,7 @@ const pageVariants = {
 
 // TODO: handle geocoding fallback
 export default function JanAushadhiMapPage({
-  onLogout, onNavigateToUpload, onNavigateToDashboard, onNavigateToReports,
-  onNavigateToInsights, onNavigateToGovData, onNavigateToProfile,
-  onNavigateToNotifications, onNavigateToCghsRates, currentPage
+  onLogout,currentPage
 }) {
   const { location: userLocation, error: geoError, loading: geoLoading, isFallback } = useGeolocation();
 
@@ -247,12 +245,7 @@ export default function JanAushadhiMapPage({
         <meta name="description" content="Locate nearby Jan Aushadhi generic medicine stores to save up to 80% on your healthcare costs." />
       </Helmet>
       <Navbar
-        onLogout={onLogout} onNavigateToUpload={onNavigateToUpload}
-        onNavigateToDashboard={onNavigateToDashboard} onNavigateToReports={onNavigateToReports}
-        onNavigateToInsights={onNavigateToInsights} onNavigateToGovData={onNavigateToGovData}
-        onNavigateToProfile={onNavigateToProfile} onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        onNavigateToJanAushadhi={() => {}} currentPage={currentPage}
+        onLogout={onLogout}} currentPage={currentPage}
       />
 
       <main className="pt-20 h-screen flex flex-col md:flex-row overflow-hidden">

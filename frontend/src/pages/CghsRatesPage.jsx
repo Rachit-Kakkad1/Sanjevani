@@ -26,16 +26,7 @@ const itemVariants = {
 };
 
 export default function CghsRatesPage({ 
-  onLogout, 
-  onNavigateToDashboard, 
-  onNavigateToUpload, 
-  onNavigateToReports, 
-  onNavigateToInsights, 
-  onNavigateToGovData, 
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  currentPage 
+  onLogout,currentPage 
 }) {
   const [procedures, setProcedures] = useState([]);
   const [classifications, setClassifications] = useState([]);
@@ -98,16 +89,7 @@ export default function CghsRatesPage({
       </Helmet>
       
       <Navbar 
-        onLogout={onLogout} 
-        onNavigateToUpload={onNavigateToUpload} 
-        onNavigateToDashboard={onNavigateToDashboard} 
-        onNavigateToReports={onNavigateToReports} 
-        onNavigateToInsights={onNavigateToInsights} 
-        onNavigateToGovData={onNavigateToGovData} 
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={() => {}}
+        onLogout={onLogout}}
         currentPage={currentPage} 
       />
 

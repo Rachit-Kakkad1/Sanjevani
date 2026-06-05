@@ -99,7 +99,7 @@ const features = [
 ];
 
 /* ─── Main Component ─── */
-const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
+const LoginPage = ({}) => {
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -114,9 +114,7 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
           email: userInfo.data.email,
           picture: userInfo.data.picture,
           joined: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-        }));
-        
-        onNavigateToDashboard();
+        }));();
       } catch (err) {
         console.error('Failed to fetch user info', err);
       }

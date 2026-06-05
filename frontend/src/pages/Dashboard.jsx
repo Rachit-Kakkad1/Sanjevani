@@ -38,16 +38,7 @@ const itemVariants = {
 
 // TODO: fetch actual user stats instead of static data (high priority for v2.1)
 export default function Dashboard({ 
-  onLogout, 
-  onNavigateToUpload, 
-  onNavigateToGovData, 
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToReports,
-  onNavigateToInsights,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
+  onLogout,currentPage 
 }) {
   const [bills, setBills] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -187,7 +178,7 @@ export default function Dashboard({
     title: 'Nearby Jan Aushadhi',
     description: 'Find nearby government-certified stores to save up to 80% on medicines.',
     action: 'Find Stores',
-    onAction: () => onNavigateToJanAushadhi(),
+    onAction: () =>(),
     color: '#8D7B68',
     bg: 'bg-[#8D7B68]/10',
   });
@@ -204,17 +195,7 @@ export default function Dashboard({
         <meta name="description" content="View your medical bill history, total savings, and overcharge analytics." />
       </Helmet>
       <Navbar 
-        onLogout={onLogout} 
-        onNavigateToUpload={onNavigateToUpload} 
-        onNavigateToDashboard={() => {}} 
-        onNavigateToReports={onNavigateToReports} 
-        onNavigateToInsights={onNavigateToInsights} 
-        onNavigateToGovData={onNavigateToGovData} 
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage} 
+        onLogout={onLogout}}currentPage={currentPage} 
       />
       
       <main className="pt-24 pb-12 px-4 md:px-8">
@@ -233,7 +214,7 @@ export default function Dashboard({
             </motion.div>
             
             <motion.div variants={itemVariants} className="xl:col-span-1">
-              <ActionPanel onNavigateToUpload={onNavigateToUpload} />
+              <ActionPanel/>
             </motion.div>
           </div>
 

@@ -189,15 +189,7 @@ function AnimatedBarChart({ data, color }) {
   );
 }
 
-export default function InsightsPage({ 
-  onNavigateToDashboard, 
-  onNavigateToUpload, 
-  onNavigateToGovData, 
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
+export default function InsightsPage({currentPage 
 }) {
   const [activeInsight, setActiveInsight] = useState(null);
 
@@ -209,15 +201,7 @@ export default function InsightsPage({
       style={{ backgroundColor: '#E3D5CA' }}
     >
       <Navbar 
-        onLogout={onNavigateToDashboard} 
-        onNavigateToUpload={onNavigateToUpload}
-        onNavigateToDashboard={onNavigateToDashboard}
-        onNavigateToGovData={onNavigateToGovData}
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage}
+        onLogout={}currentPage={currentPage}
       />
 
       <main className="pt-24 pb-12 px-4 md:px-8 relative z-10">
@@ -539,7 +523,7 @@ export default function InsightsPage({
             <motion.button
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={onNavigateToUpload}
+              onClick={}
               className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white shadow-2xl"
               style={{ 
                 background: 'linear-gradient(135deg, #8D7B68, #A4907C)',

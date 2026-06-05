@@ -21,16 +21,7 @@ const itemVariants = {
 
 // TODO: sync user profile data with backend
 export default function ProfilePage({ 
-  onLogout, 
-  onNavigateToDashboard, 
-  onNavigateToUpload, 
-  onNavigateToReports, 
-  onNavigateToInsights, 
-  onNavigateToGovData,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
+  onLogout,currentPage 
 }) {
   const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
   const user = {
@@ -48,7 +39,7 @@ export default function ProfilePage({
       items: [
         { icon: User, label: 'Personal Information', value: 'Manage your profile details', color: '#8D7B68' },
         { icon: Mail, label: 'Email & Security', value: 'Password, 2FA, and recovery', color: '#2563eb' },
-        { icon: Bell, label: 'Notifications', value: 'Alerts and update preferences', color: '#f59e0b', onClick: onNavigateToNotifications },
+        { icon: Bell, label: 'Notifications', value: 'Alerts and update preferences', color: '#f59e0b', onClick:},
       ]
     },
     {
@@ -68,17 +59,7 @@ export default function ProfilePage({
       className="min-h-screen bg-background transition-colors duration-300"
     >
       <Navbar
-        onLogout={onLogout}
-        onNavigateToUpload={onNavigateToUpload}
-        onNavigateToDashboard={onNavigateToDashboard}
-        onNavigateToReports={onNavigateToReports}
-        onNavigateToInsights={onNavigateToInsights}
-        onNavigateToGovData={onNavigateToGovData}
-        onNavigateToProfile={() => {}}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage}
+        onLogout={onLogout}}currentPage={currentPage}
       />
 
       <main className="pt-24 pb-12 px-4 md:px-8">

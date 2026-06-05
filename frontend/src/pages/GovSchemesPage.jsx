@@ -11,16 +11,7 @@ import { API_BASE_URL } from '../utils/api';
 
 // TODO: animate page loading
 export default function GovSchemesPage({ 
-  onLogout, 
-  onNavigateToUpload, 
-  onNavigateToDashboard, 
-  onNavigateToReports, 
-  onNavigateToInsights, 
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
+  onLogout,currentPage 
 }) {
   const [schemes, setSchemes] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -57,17 +48,7 @@ export default function GovSchemesPage({
         <meta name="description" content="Discover government healthcare schemes and eligibility based on your income and state." />
       </Helmet>
       <Navbar
-        onLogout={onLogout}
-        onNavigateToUpload={onNavigateToUpload}
-        onNavigateToDashboard={onNavigateToDashboard}
-        onNavigateToReports={onNavigateToReports}
-        onNavigateToInsights={onNavigateToInsights}
-        onNavigateToGovData={() => {}} // current page
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage}
+        onLogout={onLogout}} // current pagecurrentPage={currentPage}
       />
 
       <main className="pt-28 pb-20 px-4 md:px-8">

@@ -3,19 +3,12 @@ import { Menu, X, Bell, User, LayoutDashboard, FileUp, Database, MapPin, LogOut,
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
-const Navbar = ({ 
-  onLogout, 
-  onNavigateToUpload, 
-  onNavigateToDashboard, 
-  onNavigateToReports, 
-  onNavigateToInsights, 
-  onNavigateToGovData, 
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
-}) => {
+const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currentPage = location.pathname.substring(1) || 'landing';
+
+  const onLogout = () => navigate('/landing');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -29,11 +22,11 @@ const Navbar = ({
   }, []);
 
   const navLinks = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, action: onNavigateToDashboard },
-    { id: 'upload', label: 'Upload Bill', icon: FileUp, action: onNavigateToUpload },
-    { id: 'jan-aushadhi', label: 'Store Finder', icon: MapPin, action: onNavigateToJanAushadhi },
-    { id: 'cghs-rates', label: 'CGHS Rates', icon: Activity, action: onNavigateToCghsRates },
-    { id: 'gov-data', label: 'Gov Schemes', icon: Database, action: onNavigateToGovData },
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
+    { id: 'upload', label: 'Upload Bill', icon: FileUp, href: '/upload' },
+    { id: 'jan-aushadhi', label: 'Store Finder', icon: MapPin, href: '/jan-aushadhi' },
+    { id: 'cghs-rates', label: 'CGHS Rates', icon: Activity, href: '/cghs-rates' },
+    { id: 'gov-data', label: 'Gov Schemes', icon: Database, href: '/gov-schemes' },
   ];
 
   const user = JSON.parse(localStorage.getItem('user') || '{"name": "Guest User", "email": "guest@sanjeevani.ai"}');
@@ -51,7 +44,7 @@ const Navbar = ({
           {/* Logo */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            onClick={onNavigateToDashboard}
+            to='/dashboard'
             className="flex items-center gap-2.5 cursor-pointer group"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:shadow-primary/30 transition-all duration-300">
@@ -65,9 +58,9 @@ const Navbar = ({
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.id}
-                onClick={link.action}
+                to={link.href}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                   currentPage === link.id 
                     ? 'bg-primary/10 text-primary' 
@@ -76,7 +69,7 @@ const Navbar = ({
               >
                 <link.icon className="w-4 h-4" />
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -84,17 +77,17 @@ const Navbar = ({
           <div className="hidden lg:flex items-center gap-4">
             <ThemeToggle />
             
-            <button 
-              onClick={onNavigateToNotifications}
+            <Link 
+              to='/notifications'
               className="p-2.5 rounded-xl hover:bg-primary/5 text-text-muted transition-colors relative"
             >
               <Bell className="w-5 h-5" />
               <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-background"></span>
-            </button>
+            </Link>
 
             <div className="relative">
-              <button 
-                onClick={() => setIsProfileOpen(!isProfileOpen)}
+              <Link 
+                onClick={(e) => { e.preventDefault(); setIsProfileOpen(!isProfileOpen); }}
                 className="flex items-center gap-3 pl-3 pr-2 py-1.5 rounded-xl border border-primary/10 hover:border-primary/30 transition-all duration-300 bg-white/5"
               >
                 <div className="text-right">
@@ -105,7 +98,7 @@ const Navbar = ({
                   <User className="w-5 h-5 text-primary" />
                 </div>
                 <ChevronDown className={`w-4 h-4 text-text-muted transition-transform duration-300 ${isProfileOpen ? 'rotate-180' : ''}`} />
-              </button>
+              </Link>
 
               <AnimatePresence>
                 {isProfileOpen && (
@@ -115,21 +108,21 @@ const Navbar = ({
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     className="absolute top-full right-0 mt-2 w-56 glass-card rounded-2xl py-2 shadow-2xl z-50 overflow-hidden"
                   >
-                    <button 
-                      onClick={() => { setIsProfileOpen(false); onNavigateToProfile(); }}
+                    <Link 
+                      to='/profile' onClick={() => setIsProfileOpen(false)}
                       className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-text-main hover:bg-primary/10 transition-colors"
                     >
                       <User className="w-4 h-4 text-primary" />
                       My Profile
-                    </button>
+                    </Link>
                     <div className="h-px bg-primary/10 my-1 mx-2"></div>
-                    <button 
-                      onClick={onLogout}
+                    <Link 
+                      to='/login'
                       className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 transition-colors"
                     >
                       <LogOut className="w-4 h-4" />
                       Sign Out
-                    </button>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -139,12 +132,12 @@ const Navbar = ({
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-3">
             <ThemeToggle />
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            <Link 
+              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(!isMobileMenuOpen); }}
               className="p-2 rounded-xl text-text-main hover:bg-primary/5 transition-colors"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -160,9 +153,9 @@ const Navbar = ({
           >
             <div className="px-4 py-6 flex flex-col gap-2">
               {navLinks.map((link) => (
-                <button
+                <Link
                   key={link.id}
-                  onClick={() => { link.action(); setIsMobileMenuOpen(false); }}
+                  to={link.href} onClick={() => setIsMobileMenuOpen(false)}
                   className={`flex items-center gap-4 px-4 py-3 rounded-xl text-base font-medium transition-all ${
                     currentPage === link.id 
                       ? 'bg-primary/10 text-primary' 
@@ -171,23 +164,23 @@ const Navbar = ({
                 >
                   <link.icon size={20} />
                   {link.label}
-                </button>
+                </Link>
               ))}
               <div className="h-px bg-primary/10 my-2"></div>
-              <button 
-                onClick={() => { onNavigateToProfile(); setIsMobileMenuOpen(false); }}
+              <Link 
+                to='/profile' onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center gap-4 px-4 py-3 rounded-xl text-base font-medium text-text-muted"
               >
                 <User size={20} />
                 Profile
-              </button>
-              <button 
-                onClick={onLogout}
+              </Link>
+              <Link 
+                to='/login'
                 className="flex items-center gap-4 px-4 py-3 rounded-xl text-base font-medium text-red-500"
               >
                 <LogOut size={20} />
                 Sign Out
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -27,16 +27,7 @@ const itemVariants = {
 
 import { getBillHistory } from '../../utils/api';
 
-export default function ReportsPage({ 
-  onNavigateToDashboard, 
-  onNavigateToUpload, 
-  onNavigateToInsights, 
-  onNavigateToGovData, 
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
+export default function ReportsPage({currentPage 
 }) {
   const [currentBill, setCurrentBill] = useState(null);
   const [history, setHistory] = useState([]);
@@ -78,16 +69,7 @@ export default function ReportsPage({
       style={{ backgroundColor: '#E3D5CA' }}
     >
       <Navbar 
-        onLogout={onNavigateToDashboard} 
-        onNavigateToUpload={onNavigateToUpload}
-        onNavigateToDashboard={onNavigateToDashboard}
-        onNavigateToInsights={onNavigateToInsights}
-        onNavigateToGovData={onNavigateToGovData}
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage}
+        onLogout={}currentPage={currentPage}
       />
 
       <main className="pt-20 pb-10 px-4 md:px-6">
@@ -105,7 +87,7 @@ export default function ReportsPage({
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={onNavigateToUpload}
+                  onClick={}
                   className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white"
                   style={{ backgroundColor: '#8D7B68' }}
                 >

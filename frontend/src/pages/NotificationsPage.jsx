@@ -21,16 +21,7 @@ const itemVariants = {
 
 // TODO: wire up push notifications
 export default function NotificationsPage({ 
-  onLogout, 
-  onNavigateToDashboard, 
-  onNavigateToUpload, 
-  onNavigateToReports, 
-  onNavigateToInsights, 
-  onNavigateToGovData,
-  onNavigateToProfile,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  currentPage 
+  onLogout,currentPage 
 }) {
   const notifications = [
     {
@@ -94,17 +85,7 @@ export default function NotificationsPage({
       style={{ backgroundColor: '#E3D5CA' }}
     >
       <Navbar 
-        onLogout={onLogout} 
-        onNavigateToUpload={onNavigateToUpload}
-        onNavigateToDashboard={onNavigateToDashboard}
-        onNavigateToReports={onNavigateToReports}
-        onNavigateToInsights={onNavigateToInsights}
-        onNavigateToGovData={onNavigateToGovData}
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={() => {}}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage}
+        onLogout={onLogout}}currentPage={currentPage}
       />
 
       <main className="pt-24 pb-12 px-4 md:px-8">

@@ -42,16 +42,7 @@ function ConfettiPiece({ delay, side }) {
 }
 
 // TODO: handle large files above 10MB
-export default function UploadPage({ 
-  onNavigateToDashboard, 
-  onNavigateToReports, 
-  onNavigateToInsights, 
-  onNavigateToGovData,
-  onNavigateToProfile,
-  onNavigateToNotifications,
-  onNavigateToJanAushadhi,
-  onNavigateToCghsRates,
-  onLogout,
+export default function UploadPage({onLogout,
   currentPage 
 }) {
   const [files, setFiles] = useState([]);
@@ -197,12 +188,11 @@ export default function UploadPage({
 
   useEffect(() => {
     if (status === 'completed') {
-      const timer = setTimeout(() => {
-        onNavigateToReports();
+      const timer = setTimeout(() => {();
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [status, onNavigateToReports]);
+  }, [status,]);
 
   useEffect(() => {
     return () => {
@@ -250,17 +240,7 @@ export default function UploadPage({
       />
 
       <Navbar 
-        onLogout={onLogout} 
-        onNavigateToUpload={() => {}} 
-        onNavigateToDashboard={onNavigateToDashboard} 
-        onNavigateToReports={onNavigateToReports} 
-        onNavigateToInsights={onNavigateToInsights} 
-        onNavigateToGovData={onNavigateToGovData} 
-        onNavigateToProfile={onNavigateToProfile}
-        onNavigateToNotifications={onNavigateToNotifications}
-        onNavigateToJanAushadhi={onNavigateToJanAushadhi}
-        onNavigateToCghsRates={onNavigateToCghsRates}
-        currentPage={currentPage} 
+        onLogout={onLogout}}currentPage={currentPage} 
       />
 
       <main className="pt-24 pb-12 px-4 md:px-8 relative z-10">
@@ -294,7 +274,7 @@ export default function UploadPage({
             <motion.button
               whileHover={{ scale: 1.02, x: -5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={onNavigateToDashboard}
+              onClick={}
               className="text-base font-medium text-[#8D7B68] hover:underline flex items-center gap-1"
             >
               <ArrowRight size={18} className="rotate-180" />
