@@ -22,7 +22,7 @@
 
 <br/>
 
-[🌐 Live Demo](https://sanjeevani-healthcare.vercel.app) · [📖 API Docs](https://sanjeevani-backend-blh0.onrender.com/health) · [🤖 OCR Service](https://rachit-ai-sanjevani-ocr.hf.space/docs) · [🐛 Report Bug](https://github.com/Rachit-Kakkad1/Sanjevani/issues) · [✨ Request Feature](https://github.com/Rachit-Kakkad1/Sanjevani/issues)
+[🌐 Live Demo](https://sanjeevani-healthcare.vercel.app) · [📖 API Docs](https://sanjeevani-backend-blh0.onrender.com/health) · [🤖 OCR Service](https://rachit-ai-sanjeevani-ocr.hf.space/docs) · [🐛 Report Bug](https://github.com/Rachit-Kakkad1/Sanjevani/issues) · [✨ Request Feature](https://github.com/Rachit-Kakkad1/Sanjevani/issues)
 
 </div>
 
@@ -336,7 +336,7 @@ Sanjevani is deployed across three cloud platforms for reliability and performan
 |:---|:---|:---|:---:|
 | 🌐 **Frontend** | Vercel | [sanjeevani-healthcare.vercel.app](https://sanjeevani-healthcare.vercel.app) | ✅ Live |
 | ⚙️ **Backend** | Render | [sanjeevani-backend-blh0.onrender.com](https://sanjeevani-backend-blh0.onrender.com) | ✅ Live |
-| 🤖 **OCR Service** | HF Spaces | [rachit-ai-sanjevani-ocr.hf.space](https://rachit-ai-sanjevani-ocr.hf.space) | ✅ Live |
+| 🤖 **OCR Service** | HF Spaces | [rachit-ai-sanjeevani-ocr.hf.space](https://rachit-ai-sanjeevani-ocr.hf.space) | ✅ Live |
 
 ---
 
