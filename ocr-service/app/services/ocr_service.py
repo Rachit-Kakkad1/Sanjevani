@@ -107,6 +107,9 @@ TOTAL_KEYWORDS = re.compile(
 # Minimum OCR confidence thresholds
 MIN_EASYOCR_CONFIDENCE = 0.4
 MIN_TESSERACT_CONFIDENCE = 30  # Tesseract uses 0-100 scale
+MAX_PDF_PAGES = 3
+MAX_IMAGE_HEIGHT = 4000
+MAX_IMAGE_WIDTH = 2000
 
 
 # ─── PDF Conversion ───────────────────────────────────────────────────────
@@ -117,14 +120,34 @@ def convert_pdf_to_images(pdf_bytes: bytes) -> np.ndarray:
         raise Exception("POPPLER_MISSING: PDF processing requires Poppler")
 
     try:
-        images = convert_from_bytes(pdf_bytes)
+        # Enforce hard limit on number of pages decoded to prevent DoS
+        images = convert_from_bytes(pdf_bytes, first_page=1, last_page=MAX_PDF_PAGES)
+        
         combined_img = None
+        current_height = 0
+        
         for img in images:
             cv_img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+            
+            # Resize if page is absurdly large to protect memory
+            h, w = cv_img.shape[:2]
+            if w > MAX_IMAGE_WIDTH:
+                scale = MAX_IMAGE_WIDTH / w
+                cv_img = cv2.resize(cv_img, (int(w * scale), int(h * scale)))
+                h, w = cv_img.shape[:2]
+                
+            # Stop adding pages if we exceed max height
+            if current_height + h > MAX_IMAGE_HEIGHT:
+                logger.warning(f"Truncating PDF processing at {current_height}px to prevent OOM")
+                break
+                
             if combined_img is None:
                 combined_img = cv_img
             else:
                 combined_img = cv2.vconcat([combined_img, cv_img])
+                
+            current_height += h
+            
         return combined_img
     except Exception as e:
         raise Exception(f"PDF conversion failed: {str(e)}")
@@ -616,6 +639,13 @@ def process_bill_image(image_bytes: bytes, filename: str) -> dict:
 
         if img is None:
             raise Exception("Failed to decode image")
+
+        # Protect against massive image bombs that bypass PDF limits
+        h, w = img.shape[:2]
+        if w > MAX_IMAGE_WIDTH or h > MAX_IMAGE_HEIGHT:
+            logger.warning(f"Downscaling huge image {w}x{h} to prevent OOM")
+            scale = min(MAX_IMAGE_WIDTH / w, MAX_IMAGE_HEIGHT / h)
+            img = cv2.resize(img, (int(w * scale), int(h * scale)))
 
         logger.info(f"Image decoded: {img.shape[1]}x{img.shape[0]} pixels")
 
