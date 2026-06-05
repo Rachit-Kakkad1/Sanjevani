@@ -1,6 +1,8 @@
 import asyncio
 import logging
 from fastapi import APIRouter, File, UploadFile, HTTPException
+import asyncio
+from async_timeout import timeout
 from app.services.ocr_service import process_bill_image
 
 logger = logging.getLogger("sanjevani.router")
@@ -32,7 +34,15 @@ async def extract_bill_data(file: UploadFile = File(...)):
             raise HTTPException(400, "File too large. Maximum size is 10MB.")
 
         # Run OCR in a thread pool to avoid blocking the async event loop
-        result = await asyncio.to_thread(process_bill_image, contents, file.filename)
+        # Enforce a strict 45-second timeout (Express backend gives up at 60s)
+        try:
+            result = await asyncio.wait_for(
+                asyncio.to_thread(process_bill_image, contents, file.filename),
+                timeout=45.0
+            )
+        except asyncio.TimeoutError:
+            logger.error("OCR execution timed out after 45 seconds")
+            raise HTTPException(504, "OCR processing timed out. The image may be too complex.")
 
         # Check if OCR returned an error state
         if "error" in result:
