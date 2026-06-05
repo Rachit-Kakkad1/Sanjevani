@@ -342,6 +342,9 @@ Sanjevani is deployed across three cloud platforms for reliability and performan
 
 ## 📊 API Reference
 
+### OpenAPI Specification
+An OpenAPI 3.0 specification is available at docs/openapi.yaml documenting the actual request validation schemas and authentication endpoints.
+
 ### Health Check
 ```http
 GET /health
