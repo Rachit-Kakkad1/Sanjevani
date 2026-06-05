@@ -4,6 +4,7 @@ const router = express.Router();
 const Joi = require('joi');
 const { getNearbyStores, createStore } = require('../controllers/store.controller');
 const { validate } = require('../middlewares/validate');
+const { protect, admin } = require('../middlewares/auth');
 
 const storeSchema = Joi.object({
   name: Joi.string().required(),
@@ -18,6 +19,6 @@ const storeSchema = Joi.object({
 });
 
 router.get('/nearby', getNearbyStores);
-router.post('/', validate(storeSchema), createStore); // Use for seeding or admin purposes
+router.post('/', protect, admin, validate(storeSchema), createStore); // Use for seeding or admin purposes
 
 module.exports = router;
