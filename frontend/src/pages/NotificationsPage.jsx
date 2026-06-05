@@ -85,7 +85,7 @@ export default function NotificationsPage({
       style={{ backgroundColor: '#E3D5CA' }}
     >
       <Navbar 
-        onLogout={onLogout}}currentPage={currentPage}
+        onLogout={onLogout} currentPage={currentPage}
       />
 
       <main className="pt-24 pb-12 px-4 md:px-8">

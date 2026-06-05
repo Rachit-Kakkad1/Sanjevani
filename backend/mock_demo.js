@@ -146,7 +146,7 @@ const mockGenerateAuditReport = async (items) => {
 
 async function runMockDemo() {
   console.log('\n' + '='.repeat(60));
-  console.log('🚀 SANJEEVANI AUDIT ENGINE - MOCK DEMONSTRATION');
+  console.log('🚀 SANJEVANI AUDIT ENGINE - MOCK DEMONSTRATION');
   console.log('='.repeat(60));
 
   console.log('\n--- 1. Normalization Example ---');

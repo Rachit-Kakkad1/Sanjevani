@@ -191,11 +191,11 @@ export default function Dashboard({
       className="min-h-screen"
     >
       <Helmet>
-        <title>Dashboard | Sanjeevani - Your Health Audit</title>
+        <title>Dashboard | Sanjevani - Your Health Audit</title>
         <meta name="description" content="View your medical bill history, total savings, and overcharge analytics." />
       </Helmet>
       <Navbar 
-        onLogout={onLogout}}currentPage={currentPage} 
+        onLogout={onLogout} currentPage={currentPage} 
       />
       
       <main className="pt-24 pb-12 px-4 md:px-8">
@@ -242,7 +242,7 @@ export default function Dashboard({
               <span className="text-white font-serif text-sm font-bold">S</span>
             </div>
             <span className="text-[#8D7B68] text-sm">
-              Sanjeevani — Medical Bill Audit Platform
+              Sanjevani — Medical Bill Audit Platform
             </span>
           </div>
           
@@ -253,7 +253,7 @@ export default function Dashboard({
           </div>
           
           <p className="text-[#8D7B68] text-sm">
-            © 2024 Sanjeevani. All rights reserved.
+            © 2024 Sanjevani. All rights reserved.
           </p>
         </div>
       </footer>

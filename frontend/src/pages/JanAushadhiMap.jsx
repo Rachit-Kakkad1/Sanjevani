@@ -241,11 +241,11 @@ export default function JanAushadhiMapPage({
     <motion.div initial="initial" animate="animate" exit="exit" variants={pageVariants}
       className="min-h-screen bg-background transition-colors duration-300">
       <Helmet>
-        <title>Jan Aushadhi Map | Sanjeevani - Find Generic Medicines</title>
+        <title>Jan Aushadhi Map | Sanjevani - Find Generic Medicines</title>
         <meta name="description" content="Locate nearby Jan Aushadhi generic medicine stores to save up to 80% on your healthcare costs." />
       </Helmet>
       <Navbar
-        onLogout={onLogout}} currentPage={currentPage}
+        onLogout={onLogout} currentPage={currentPage}
       />
 
       <main className="pt-20 h-screen flex flex-col md:flex-row overflow-hidden">

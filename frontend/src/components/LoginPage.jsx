@@ -114,7 +114,7 @@ const LoginPage = ({}) => {
           email: userInfo.data.email,
           picture: userInfo.data.picture,
           joined: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-        }));();
+        }));
       } catch (err) {
         console.error('Failed to fetch user info', err);
       }
@@ -162,7 +162,7 @@ const LoginPage = ({}) => {
             <ShieldCheckIcon size={22} className="text-white" />
           </div>
           <div>
-            <span className="text-[#1a1a1a] font-bold text-lg tracking-wide">SANJEEVANI</span>
+            <span className="text-[#1a1a1a] font-bold text-lg tracking-wide">SANJEVANI</span>
             <p className="text-[#8D7B68] text-[10px] tracking-[0.15em] uppercase -mt-1">The Medical Billing Authority</p>
           </div>
         </motion.div>
@@ -203,7 +203,7 @@ const LoginPage = ({}) => {
             <motion.p variants={fadeUp} custom={2}
               className="text-[#5a5a5a] text-base leading-relaxed max-w-sm mb-10"
             >
-              Sanjeevani is India's trusted platform for auditing medical bills, exposing overcharges, and ensuring accountability in healthcare.
+              Sanjevani is India's trusted platform for auditing medical bills, exposing overcharges, and ensuring accountability in healthcare.
             </motion.p>
 
             {/* Feature Cards */}
@@ -256,7 +256,7 @@ const LoginPage = ({}) => {
               Welcome Back
             </h1>
             <p className="text-[#8D7B68] text-sm">
-              Sign in to continue to your Sanjeevani account
+              Sign in to continue to your Sanjevani account
             </p>
           </div>
 

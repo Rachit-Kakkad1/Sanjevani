@@ -29,7 +29,7 @@ const Navbar = () => {
     { id: 'gov-data', label: 'Gov Schemes', icon: Database, href: '/gov-schemes' },
   ];
 
-  const user = JSON.parse(localStorage.getItem('user') || '{"name": "Guest User", "email": "guest@sanjeevani.ai"}');
+  const user = JSON.parse(localStorage.getItem('user') || '{"name": "Guest User", "email": "guest@sanjevani.ai"}');
 
   return (
     <nav 

@@ -188,7 +188,7 @@ export default function UploadPage({onLogout,
 
   useEffect(() => {
     if (status === 'completed') {
-      const timer = setTimeout(() => {();
+      const timer = setTimeout(() => {
       }, 2000);
       return () => clearTimeout(timer);
     }
@@ -240,7 +240,7 @@ export default function UploadPage({onLogout,
       />
 
       <Navbar 
-        onLogout={onLogout}}currentPage={currentPage} 
+        onLogout={onLogout} currentPage={currentPage} 
       />
 
       <main className="pt-24 pb-12 px-4 md:px-8 relative z-10">

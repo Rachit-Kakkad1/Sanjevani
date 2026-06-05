@@ -69,7 +69,7 @@ export default function ReportsPage({currentPage
       style={{ backgroundColor: '#E3D5CA' }}
     >
       <Navbar 
-        onLogout={}currentPage={currentPage}
+        onLogout={onLogout} currentPage={currentPage}
       />
 
       <main className="pt-20 pb-10 px-4 md:px-6">
@@ -136,7 +136,7 @@ export default function ReportsPage({currentPage
       <footer className="py-6 px-4 md:px-8 border-t border-[#C8B6A6]/30">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#8D7B68]">
           <div className="flex items-center gap-2">
-            <span>Sanjeevani - Medical Bill Audit Platform</span>
+            <span>Sanjevani - Medical Bill Audit Platform</span>
           </div>
           <div className="flex items-center gap-4">
             <a href="#">Privacy</a>
