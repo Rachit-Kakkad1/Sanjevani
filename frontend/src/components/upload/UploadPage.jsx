@@ -274,7 +274,7 @@ export default function UploadPage({onLogout,
             <motion.button
               whileHover={{ scale: 1.02, x: -5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={}
+              onClick={() => {}}
               className="text-base font-medium text-[#8D7B68] hover:underline flex items-center gap-1"
             >
               <ArrowRight size={18} className="rotate-180" />

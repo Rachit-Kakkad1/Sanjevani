@@ -87,7 +87,7 @@ export default function ReportsPage({currentPage
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={}
+                  onClick={() => {}}
                   className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white"
                   style={{ backgroundColor: '#8D7B68' }}
                 >

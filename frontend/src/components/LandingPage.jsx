@@ -111,7 +111,7 @@ export default function LandingPage({}) {
             <a href="#tools" className="text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">Our Tools</a>
             <a href="#database" className="text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">The Database</a>
             <button 
-              onClick={}
+              onClick={() => {}}
               className="bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-all paper-shadow"
             >
               Audit Now
@@ -196,13 +196,13 @@ export default function LandingPage({}) {
                 <motion.button 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={}
+                  onClick={() => {}}
                   className="bg-red-600 text-white px-10 py-5 font-black text-xl uppercase tracking-tighter paper-shadow flex items-center justify-center gap-3"
                 >
                   <Upload className="w-6 h-6" /> UPLOAD YOUR BILL
                 </motion.button>
                 <button 
-                  onClick={}
+                  onClick={() => {}}
                   className="bg-transparent border-4 border-black px-10 py-5 font-black text-xl uppercase tracking-tighter hover:bg-black hover:text-white transition-all"
                 >
                   SEE THE EVIDENCE
@@ -503,7 +503,7 @@ export default function LandingPage({}) {
                  <motion.button 
                     whileHover={{ scale: 1.05, boxShadow: '12px 12px 0px 0px #000' }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={}
+                    onClick={() => {}}
                     className="bg-red-600 text-white px-16 py-8 font-black text-2xl uppercase tracking-tighter border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:bg-red-700 transition-all"
                  >
                     Audit My Bill Now
@@ -511,7 +511,7 @@ export default function LandingPage({}) {
                  <motion.button 
                     whileHover={{ scale: 1.05, boxShadow: '12px 12px 0px 0px #D9230F' }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={}
+                    onClick={() => {}}
                     className="bg-white text-black px-16 py-8 font-black text-2xl uppercase tracking-tighter border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:bg-gray-50 transition-all"
                  >
                     Join The Bureau

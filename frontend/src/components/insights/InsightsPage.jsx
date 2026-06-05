@@ -523,7 +523,7 @@ export default function InsightsPage({currentPage
             <motion.button
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={}
+              onClick={() => {}}
               className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white shadow-2xl"
               style={{ 
                 background: 'linear-gradient(135deg, #8D7B68, #A4907C)',

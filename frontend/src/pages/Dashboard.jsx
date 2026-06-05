@@ -178,7 +178,7 @@ export default function Dashboard({
     title: 'Nearby Jan Aushadhi',
     description: 'Find nearby government-certified stores to save up to 80% on medicines.',
     action: 'Find Stores',
-    onAction: () =>(),
+    onAction: () => {},
     color: '#8D7B68',
     bg: 'bg-[#8D7B68]/10',
   });

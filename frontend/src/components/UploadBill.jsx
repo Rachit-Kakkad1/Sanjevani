@@ -335,7 +335,7 @@ export default function UploadBill({}) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={}
+                onClick={() => {}}
                 className="px-8 py-3 rounded-2xl font-semibold text-white"
                 style={{ backgroundColor: '#8D7B68' }}
               >
@@ -362,7 +362,7 @@ export default function UploadBill({}) {
           <motion.button
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
-            onClick={}
+            onClick={() => {}}
             className="flex items-center gap-2 text-[#8D7B68] font-medium hover:opacity-70 transition-opacity"
           >
             <ArrowRight size={18} className="rotate-180" />
