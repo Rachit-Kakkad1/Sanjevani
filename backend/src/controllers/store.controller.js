@@ -9,7 +9,7 @@ const logger = require('../utils/logger');
 // TODO: add filters for store rating
 exports.getNearbyStores = async (req, res, next) => {
   try {
-    const { lat, lng, maxDistance = 10000 } = req.query; // maxDistance in meters (default 10km)
+    const { lat, lng, maxDistance = 50000, limit = 50 } = req.query; // maxDistance in meters (default 50km)
 
     if (!lat || !lng) {
       return res.status(400).json({
@@ -30,7 +30,7 @@ exports.getNearbyStores = async (req, res, next) => {
 
     logger.info(`Fetching stores near: ${latitude}, ${longitude} within ${maxDistance}m`);
 
-    const stores = await Store.find({
+    let stores = await Store.find({
       location: {
         $near: {
           $geometry: {
@@ -40,7 +40,21 @@ exports.getNearbyStores = async (req, res, next) => {
           $maxDistance: parseInt(maxDistance)
         }
       }
-    });
+    }).limit(parseInt(limit));
+
+    // Fallback: If no stores found within maxDistance, fetch closest stores in DB regardless of distance
+    if (stores.length === 0) {
+      stores = await Store.find({
+        location: {
+          $near: {
+            $geometry: {
+              type: 'Point',
+              coordinates: [longitude, latitude]
+            }
+          }
+        }
+      }).limit(20);
+    }
 
     res.status(200).json({
       success: true,

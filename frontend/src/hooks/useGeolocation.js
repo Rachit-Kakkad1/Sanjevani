@@ -1,11 +1,11 @@
-﻿import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-// Default fallback: New Delhi
-const DEFAULT_LOCATION = { lat: 28.6139, lng: 77.2090 };
+// Default fallback: Swaminarayan University, Kalol, Gujarat (382721)
+const DEFAULT_LOCATION = { lat: 23.2137, lng: 72.4938 };
 
 /**
  * Custom hook to get user's current geolocation.
- * Falls back to Delhi coordinates if geolocation is denied or unavailable.
+ * Falls back to Swaminarayan University coordinates if browser geolocation permission is pending or denied.
  */
 export default function useGeolocation() {
   const [location, setLocation] = useState(null);
@@ -35,7 +35,7 @@ export default function useGeolocation() {
         setLoading(false);
       },
       (err) => {
-        console.warn('Geolocation error:', err.message);
+        console.warn('Geolocation error, using Swaminarayan University fallback:', err.message);
         let msg = 'Location access denied.';
         if (err.code === 2) msg = 'Location unavailable.';
         if (err.code === 3) msg = 'Location request timed out.';

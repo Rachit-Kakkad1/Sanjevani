@@ -99,7 +99,24 @@ const features = [
 ];
 
 /* ─── Main Component ─── */
-const LoginPage = ({}) => {
+const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
+  const [demoNotice, setDemoNotice] = useState(false);
+
+  const handleDemoLogin = (reason = '') => {
+    localStorage.setItem('user', JSON.stringify({
+      name: 'Dr. Rachit Kakkad',
+      email: 'rachit@sanjeevani.health',
+      picture: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150&auto=format&fit=crop&q=80',
+      joined: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+      isDemo: true
+    }));
+    if (reason) {
+      console.info('Logging in as Demo User:', reason);
+    }
+    if (typeof onNavigateToDashboard === 'function') {
+      onNavigateToDashboard();
+    }
+  };
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
@@ -117,9 +134,13 @@ const LoginPage = ({}) => {
         }));
       } catch (err) {
         console.error('Failed to fetch user info', err);
+        handleDemoLogin('Failed Google user info fetch');
       }
     },
-    onError: error => console.error('Login Failed:', error)
+    onError: error => {
+      console.warn('Google Login error, proceeding with Demo Login:', error);
+      handleDemoLogin('Google Client ID invalid/not configured');
+    }
   });
 
   return (
@@ -136,7 +157,7 @@ const LoginPage = ({}) => {
           style={{ filter: 'sepia(20%) saturate(70%) brightness(1.05)' }}
         />
         
-        {/* Gradient Mask Overlay — heavy at top (for text readability), lighter at bottom (image shows through) */}
+        {/* Gradient Mask Overlay */}
         <div className="absolute inset-0" style={{
           background: `
             linear-gradient(180deg, 
@@ -151,7 +172,7 @@ const LoginPage = ({}) => {
           `
         }} />
 
-        {/* Logo — on top of everything */}
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -167,7 +188,7 @@ const LoginPage = ({}) => {
           </div>
         </motion.div>
 
-        {/* Content — on top of everything */}
+        {/* Content */}
         <div className="relative z-10 flex-1 flex flex-col justify-center px-10 xl:px-14 pb-0">
           <motion.div
             variants={staggerContainer}
@@ -256,22 +277,41 @@ const LoginPage = ({}) => {
               Welcome Back
             </h1>
             <p className="text-[#8D7B68] text-sm">
-              Sign in to continue to your Sanjevani account
+              Sign in to access your Sanjevani audit dashboard
             </p>
           </div>
 
           {/* Google Button */}
           <motion.button
-            onClick={() => login()}
+            onClick={() => {
+              try {
+                login();
+              } catch (e) {
+                console.warn('Direct login call error:', e);
+                handleDemoLogin('Google OAuth error');
+              }
+            }}
             whileHover={{ y: -2, boxShadow: '0 8px 25px rgba(0,0,0,0.1)' }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 px-6 flex items-center justify-center gap-3 rounded-xl font-medium text-[#1a1a1a] bg-white border border-[#e0e0e0] shadow-sm hover:shadow-md transition-all cursor-pointer mb-6"
+            className="w-full py-3.5 px-6 flex items-center justify-center gap-3 rounded-xl font-medium text-[#1a1a1a] bg-white border border-[#e0e0e0] shadow-sm hover:shadow-md transition-all cursor-pointer mb-3"
           >
             <GoogleIcon />
             Continue with Google
           </motion.button>
 
+          {/* Instant Demo Access Button */}
+          <motion.button
+            onClick={() => handleDemoLogin('Direct Guest Access')}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full py-3.5 px-6 flex items-center justify-center gap-2 rounded-xl font-semibold text-white bg-[#8D7B68] hover:bg-[#7a6a5a] shadow-md transition-all cursor-pointer mb-4"
+          >
+            🚀 Continue as Guest (Demo Login)
+          </motion.button>
 
+          <p className="text-[11px] text-center text-[#8D7B68] bg-[#F5EFE7]/60 p-2.5 rounded-lg border border-[#8D7B68]/20">
+            💡 <strong>Note:</strong> Google Login requires a registered Google OAuth Client ID. Click <strong>Continue as Guest</strong> to test instantly!
+          </p>
         </motion.div>
 
         {/* Footer */}
