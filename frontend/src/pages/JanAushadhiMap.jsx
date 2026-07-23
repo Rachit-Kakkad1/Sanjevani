@@ -88,9 +88,13 @@ export default function JanAushadhiMapPage({
     setIsLoading(true);
     setSearchStatus('Loading MapmyIndia (Mappls)...');
 
-    // 1. Try Mappls SDK
+    // 1. Try Mappls SDK with 2.5s timeout race
+    let mapplsLoaded = false;
     try {
-      await loadMapplsMapSDK();
+      await Promise.race([
+        loadMapplsMapSDK(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Mappls SDK timeout')), 2500))
+      ]);
       await loadMapplsPlugins();
 
       if (window.mappls && window.mappls.Map) {
@@ -102,25 +106,41 @@ export default function JanAushadhiMapPage({
           hybrid: false,
         });
 
-        const onLoad = () => {
-          mapInstance.current = map;
-          setMapEngine('mappls');
-          loadStoresForLocation(SWAMINARAYAN_UNIVERSITY.lat, SWAMINARAYAN_UNIVERSITY.lng, map, 'mappls');
-        };
+        mapplsLoaded = await new Promise((resolve) => {
+          let done = false;
+          const onLoad = () => {
+            if (done) return;
+            done = true;
+            mapInstance.current = map;
+            setMapEngine('mappls');
+            loadStoresForLocation(SWAMINARAYAN_UNIVERSITY.lat, SWAMINARAYAN_UNIVERSITY.lng, map, 'mappls');
+            resolve(true);
+          };
 
-        if (map.on) map.on('load', onLoad);
-        else if (map.addListener) map.addListener('load', onLoad);
-        else setTimeout(onLoad, 800);
+          if (map.on) map.on('load', onLoad);
+          else if (map.addListener) map.addListener('load', onLoad);
+          
+          setTimeout(onLoad, 600);
 
-        return;
+          // Failsafe timeout if Mappls Map load event never fires (common on unauthorized deployed domains)
+          setTimeout(() => {
+            if (!done) {
+              done = true;
+              console.warn('Mappls Map load event timed out on this domain, switching to Leaflet map engine');
+              resolve(false);
+            }
+          }, 2500);
+        });
+
+        if (mapplsLoaded) return;
       }
     } catch (e) {
-      console.warn('Mappls SDK unavailable, falling back to Leaflet engine:', e.message);
+      console.warn('Mappls SDK unavailable or timed out, falling back to Leaflet engine:', e.message);
     }
 
-    // 2. Leaflet Fallback Engine
+    // 2. Leaflet Fallback Engine (Runs reliably on all production environments)
     try {
-      setSearchStatus('Loading interactive fallback map...');
+      setSearchStatus('Loading interactive map...');
       const L = await loadLeafletSDK();
 
       if (!leafletMapInstance.current) {
