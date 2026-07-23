@@ -1,4 +1,5 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Lightbulb, 
@@ -41,7 +42,7 @@ const floatAnimations = [
 const statsData = [
   { label: 'Total Bills Analyzed', value: '47', icon: FileText, color: '#8D7B68', bg: 'rgba(141, 123, 104, 0.15)' },
   { label: 'Overcharges Detected', value: '23', icon: AlertTriangle, color: '#ef4444', bg: 'rgba(239, 68, 68, 0.15)' },
-  { label: 'Total Saved', value: 'â‚¹24k', icon: PiggyBank, color: '#22c55e', bg: 'rgba(34, 197, 94, 0.15)' },
+  { label: 'Total Saved', value: '₹24k', icon: PiggyBank, color: '#22c55e', bg: 'rgba(34, 197, 94, 0.15)' },
   { label: 'Success Rate', value: '94%', icon: Target, color: '#2563eb', bg: 'rgba(37, 99, 235, 0.15)' },
 ];
 
@@ -50,8 +51,8 @@ const insightsData = [
     id: 1,
     type: 'savings',
     icon: PiggyBank,
-    title: 'You saved â‚¹12,400 this year',
-    description: 'Based on 47 bills analyzed, you\'ve avoided â‚¹12,400 in overcharges through our recommendations.',
+    title: 'You saved ₹12,400 this year',
+    description: 'Based on 47 bills analyzed, you\'ve avoided ₹12,400 in overcharges through our recommendations.',
     color: '#22c55e',
     bgColor: 'rgba(34, 197, 94, 0.1)',
     stat: 'â‚¹12,400',
@@ -523,8 +524,8 @@ export default function InsightsPage({currentPage
             <motion.button
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {}}
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white shadow-2xl"
+              onClick={() => navigate('/upload')}
+              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white shadow-2xl cursor-pointer"
               style={{ 
                 background: 'linear-gradient(135deg, #8D7B68, #A4907C)',
                 boxShadow: '0 10px 40px -5px rgba(141, 123, 104, 0.4)'

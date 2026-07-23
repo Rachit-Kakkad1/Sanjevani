@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Menu, X, Bell, User, LayoutDashboard, FileUp, Database, MapPin, LogOut, ChevronDown, Sparkles, Activity } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
