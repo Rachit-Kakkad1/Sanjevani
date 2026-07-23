@@ -2,7 +2,6 @@ const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
 const logger = require('../utils/logger');
-const mockOcrResponse = require('../utils/mockOcrResponse');
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000;
@@ -12,12 +11,11 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/**
+ * Forward uploaded bill directly to the Python FastAPI OCR service.
+ * Dummy/mock data fallbacks have been completely removed.
+ */
 async function callOCRService(filePath, filename, retryCount = 0) {
-  if (process.env.USE_MOCK_OCR === "true") {
-    logger.info("[OCR] Using MOCK OCR (configured via env)");
-    return mockOcrResponse();
-  }
-
   const formData = new FormData();
   formData.append('file', fs.createReadStream(filePath), filename);
 
@@ -35,32 +33,31 @@ async function callOCRService(filePath, filename, retryCount = 0) {
     });
 
     if (!response.data || !response.data.success) {
-      throw new Error(response.data?.error || 'OCR service returned invalid response');
+      throw new Error(response.data?.error || 'Python OCR service returned an invalid response');
     }
 
-    logger.info("[OCR] Using REAL OCR");
+    logger.info(`[OCR] Python OCR stage extraction successful for: ${filename}`);
     return response.data.data;
   } catch (err) {
     const isRetryable = err.code === 'ECONNREFUSED' || err.code === 'ETIMEDOUT' || err.response?.status >= 500;
     
     if (retryCount < MAX_RETRIES && isRetryable) {
-      logger.warn(`[OCR] Retry ${retryCount + 1}/${MAX_RETRIES}: ${err.message}`);
+      logger.warn(`[OCR] Python OCR stage retry ${retryCount + 1}/${MAX_RETRIES}: ${err.message}`);
       await sleep(RETRY_DELAY * (retryCount + 1));
       return callOCRService(filePath, filename, retryCount + 1);
     }
 
-    logger.error(`[OCR] Failed: ${err.message}`);
-    throw err;
+    logger.error(`[OCR] Python OCR stage failed: ${err.message}`);
+    throw new Error(`Python OCR stage processing error: ${err.message}`);
   }
 }
 
-// TODO: validate OCR output schema
 async function processOCR(filePath, filename) {
-  logger.info(`[OCR] Sending file: ${filename}`);
+  logger.info(`[OCR] Forwarding uploaded bill to Python stage: ${filename}`);
   const result = await callOCRService(filePath, filename);
 
   if (!result.items) {
-    throw new Error('OCR response missing items field');
+    throw new Error('Python OCR stage response missing items array');
   }
 
   const confidence = result.items.length > 0
@@ -68,7 +65,7 @@ async function processOCR(filePath, filename) {
     : 0;
 
   return {
-    engine: result.engine || 'unknown',
+    engine: result.engine || 'python-easyocr',
     items: result.items,
     total: result.parsedTotal || result.items.reduce((sum, item) => sum + (item.price || 0), 0),
     ocr_confidence: confidence

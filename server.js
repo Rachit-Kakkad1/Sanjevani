@@ -1,9 +1,16 @@
-require('dotenv').config();
+const path = require('path');
+const fs = require('fs');
+
+const isRoot = fs.existsSync('./backend/src/app.js');
+const envPath = isRoot ? './backend/.env' : './.env';
+require('dotenv').config({ path: envPath });
+
 const http = require('http');
-const app = require('./src/app');
-const connectDB = require('./src/config/db');
-const { initMatcher } = require('./src/services/matcher');
-const logger = require('./src/utils/logger');
+const srcPrefix = isRoot ? './backend/src' : './src';
+const app = require(`${srcPrefix}/app`);
+const connectDB = require(`${srcPrefix}/config/db`);
+const { initMatcher } = require(`${srcPrefix}/services/matcher`);
+const logger = require(`${srcPrefix}/utils/logger`);
 
 // TODO: investigate adding clustering for scaling (priority for next sprint)
 const server = http.createServer(app);
