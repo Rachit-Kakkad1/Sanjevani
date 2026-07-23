@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FileUp, FileText, Share2, HelpCircle } from 'lucide-react';
 
@@ -7,7 +8,7 @@ const ActionButton = ({ icon: Icon, label, description, onClick, primary }) => (
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
     onClick={onClick}
-    className={`w-full p-4 rounded-2xl flex items-center gap-4 text-left transition-all ${
+    className={`w-full p-4 rounded-2xl flex items-center gap-4 text-left transition-all cursor-pointer ${
       primary 
         ? 'bg-gradient-to-br from-primary to-secondary text-white shadow-lg shadow-primary/20' 
         : 'glass-card border border-primary/10 hover:border-primary/30 text-text-main'
@@ -26,6 +27,8 @@ const ActionButton = ({ icon: Icon, label, description, onClick, primary }) => (
 );
 
 const ActionPanel = ({ onNavigateToUpload }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col gap-4">
       <ActionButton 
@@ -33,28 +36,28 @@ const ActionPanel = ({ onNavigateToUpload }) => {
         label="Analyze New Bill"
         description="Upload hospital invoice or lab report"
         primary
-        onClick={onNavigateToUpload}
+        onClick={onNavigateToUpload || (() => navigate('/upload'))}
       />
       
       <ActionButton 
         icon={FileText}
         label="Saved Reports"
         description="Access your audit history"
-        onClick={() => {}}
+        onClick={() => navigate('/reports')}
       />
       
       <ActionButton 
         icon={Share2}
         label="Export Data"
         description="Download for insurance claims"
-        onClick={() => {}}
+        onClick={() => navigate('/reports')}
       />
       
       <ActionButton 
         icon={HelpCircle}
         label="Audit Support"
         description="Get help with bill disputes"
-        onClick={() => {}}
+        onClick={() => navigate('/gov-schemes')}
       />
 
       <motion.div 

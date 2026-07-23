@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Upload, FileText, Search, Shield, TrendingUp, DollarSign, CheckCircle, AlertCircle, BarChart3, Activity, PieChart, ArrowRight, X, Menu, Clock, Star, Quote, ChevronDown, ChevronUp, Mail, Phone, MapPin, Send, Globe, ExternalLink, Rss, MessageCircle, Info, Newspaper as NewsIcon, Eye, AlertTriangle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart as RechartsPie, Pie, Cell, Legend } from 'recharts';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
@@ -80,6 +81,7 @@ const ayushmanData = [
 ];
 
 export default function LandingPage({}) {
+  const navigate = useNavigate();
   const [, setIsUploaded] = useState(false);
   const [headlineIndex, setHeadlineIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -100,7 +102,7 @@ export default function LandingPage({}) {
       {/* Navigation */}
       <nav className="sticky top-0 z-[100] bg-[#F5F0E8] border-b-2 border-black px-4 py-3">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-2 md:gap-4 cursor-pointer" onClick={() => navigate('/')}>
             <div className="w-12 h-12 md:w-20 md:h-20 flex items-center justify-center">
               <img src="/logo.png" alt="Sanjevani Logo" className="w-full h-full object-contain scale-110 md:scale-125" />
             </div>
@@ -111,8 +113,8 @@ export default function LandingPage({}) {
             <a href="#tools" className="text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">Our Tools</a>
             <a href="#database" className="text-xs font-bold uppercase tracking-widest hover:text-red-600 transition-colors">The Database</a>
             <button 
-              onClick={() => {}}
-              className="bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-all paper-shadow"
+              onClick={() => navigate('/upload')}
+              className="bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-all paper-shadow cursor-pointer"
             >
               Audit Now
             </button>
@@ -121,6 +123,19 @@ export default function LandingPage({}) {
             <Menu className="w-6 h-6" />
           </button>
         </div>
+        {isMenuOpen && (
+          <div className="md:hidden bg-[#F5F0E8] border-t border-black mt-2 pt-3 pb-2 space-y-3">
+            <a href="#investigation" onClick={() => setIsMenuOpen(false)} className="block text-xs font-bold uppercase tracking-widest hover:text-red-600">The Evidence</a>
+            <a href="#tools" onClick={() => setIsMenuOpen(false)} className="block text-xs font-bold uppercase tracking-widest hover:text-red-600">Our Tools</a>
+            <a href="#database" onClick={() => setIsMenuOpen(false)} className="block text-xs font-bold uppercase tracking-widest hover:text-red-600">The Database</a>
+            <button 
+              onClick={() => { setIsMenuOpen(false); navigate('/upload'); }}
+              className="w-full bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-all paper-shadow cursor-pointer"
+            >
+              Audit Now
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Breaking News Ticker */}
@@ -196,14 +211,16 @@ export default function LandingPage({}) {
                 <motion.button 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => {}}
-                  className="bg-red-600 text-white px-10 py-5 font-black text-xl uppercase tracking-tighter paper-shadow flex items-center justify-center gap-3"
+                  onClick={() => navigate('/upload')}
+                  className="bg-red-600 text-white px-10 py-5 font-black text-xl uppercase tracking-tighter paper-shadow flex items-center justify-center gap-3 cursor-pointer"
                 >
                   <Upload className="w-6 h-6" /> UPLOAD YOUR BILL
                 </motion.button>
                 <button 
-                  onClick={() => {}}
-                  className="bg-transparent border-4 border-black px-10 py-5 font-black text-xl uppercase tracking-tighter hover:bg-black hover:text-white transition-all"
+                  onClick={() => {
+                    document.getElementById('investigation')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="bg-transparent border-4 border-black px-10 py-5 font-black text-xl uppercase tracking-tighter hover:bg-black hover:text-white transition-all cursor-pointer"
                 >
                   SEE THE EVIDENCE
                 </button>
@@ -239,7 +256,12 @@ export default function LandingPage({}) {
                     </div>
                   ))}
                 </div>
-                <button className="w-full py-3 bg-black text-white font-black text-xs uppercase tracking-widest mt-4">Generate Legal Letter</button>
+                <button 
+                  onClick={() => navigate('/reports')}
+                  className="w-full py-3 bg-black text-white font-black text-xs uppercase tracking-widest mt-4 hover:bg-red-600 transition-colors cursor-pointer"
+                >
+                  Generate Legal Letter
+                </button>
               </div>
             </motion.div>
 
@@ -503,16 +525,16 @@ export default function LandingPage({}) {
                  <motion.button 
                     whileHover={{ scale: 1.05, boxShadow: '12px 12px 0px 0px #000' }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => {}}
-                    className="bg-red-600 text-white px-16 py-8 font-black text-2xl uppercase tracking-tighter border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:bg-red-700 transition-all"
+                    onClick={() => navigate('/upload')}
+                    className="bg-red-600 text-white px-16 py-8 font-black text-2xl uppercase tracking-tighter border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:bg-red-700 transition-all cursor-pointer"
                  >
                     Audit My Bill Now
                  </motion.button>
                  <motion.button 
                     whileHover={{ scale: 1.05, boxShadow: '12px 12px 0px 0px #D9230F' }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => {}}
-                    className="bg-white text-black px-16 py-8 font-black text-2xl uppercase tracking-tighter border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:bg-gray-50 transition-all"
+                    onClick={() => navigate('/login')}
+                    className="bg-white text-black px-16 py-8 font-black text-2xl uppercase tracking-tighter border-4 border-black shadow-[8px_8px_0px_0px_#000] hover:bg-gray-50 transition-all cursor-pointer"
                  >
                     Join The Bureau
                  </motion.button>

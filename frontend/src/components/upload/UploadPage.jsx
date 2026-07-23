@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, ArrowRight, Loader2, CheckCircle, Sparkles, Shield, FileText, Image, X, Zap } from 'lucide-react';
 
@@ -45,6 +46,7 @@ function ConfettiPiece({ delay, side }) {
 export default function UploadPage({onLogout,
   currentPage 
 }) {
+  const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [jobId, setJobId] = useState(null);
   const [processStep, setProcessStep] = useState(0);
@@ -274,8 +276,8 @@ export default function UploadPage({onLogout,
             <motion.button
               whileHover={{ scale: 1.02, x: -5 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {}}
-              className="text-base font-medium text-[#8D7B68] hover:underline flex items-center gap-1"
+              onClick={() => navigate('/dashboard')}
+              className="text-base font-medium text-[#8D7B68] hover:underline flex items-center gap-1 cursor-pointer"
             >
               <ArrowRight size={18} className="rotate-180" />
               Back to Dashboard

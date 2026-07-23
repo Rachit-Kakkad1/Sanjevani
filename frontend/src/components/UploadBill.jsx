@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { 
   Upload, FileText, Image, Camera, X, CheckCircle, 
@@ -108,6 +109,7 @@ function ConfettiPiece({ delay, side }) {
 }
 
 export default function UploadBill({}) {
+  const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [uploadProgress, setUploadProgress] = useState(null);
   const [uploadComplete, setUploadComplete] = useState(false);
@@ -335,8 +337,8 @@ export default function UploadBill({}) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => {}}
-                className="px-8 py-3 rounded-2xl font-semibold text-white"
+                onClick={() => navigate('/dashboard')}
+                className="px-8 py-3 rounded-2xl font-semibold text-white cursor-pointer"
                 style={{ backgroundColor: '#8D7B68' }}
               >
                 Go to Dashboard
@@ -362,8 +364,8 @@ export default function UploadBill({}) {
           <motion.button
             whileHover={{ scale: 1.05, x: -5 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => {}}
-            className="flex items-center gap-2 text-[#8D7B68] font-medium hover:opacity-70 transition-opacity"
+            onClick={() => navigate('/dashboard')}
+            className="flex items-center gap-2 text-[#8D7B68] font-medium hover:opacity-70 transition-opacity cursor-pointer"
           >
             <ArrowRight size={18} className="rotate-180" />
             Back to Dashboard

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Download, LayoutDashboard, FileText } from 'lucide-react';
 
@@ -29,6 +30,7 @@ import { getBillHistory } from '../../utils/api';
 
 export default function ReportsPage({currentPage 
 }) {
+  const navigate = useNavigate();
   const [currentBill, setCurrentBill] = useState(null);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -87,8 +89,8 @@ export default function ReportsPage({currentPage
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => {}}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white"
+                  onClick={() => navigate('/upload')}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white cursor-pointer"
                   style={{ backgroundColor: '#8D7B68' }}
                 >
                   <FileText size={16} />
