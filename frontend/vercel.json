@@ -1,4 +1,7 @@
 {
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/mappls-auth/:path*", "destination": "https://outpost.mappls.com/:path*" },
     { "source": "/mappls-api/:path*", "destination": "https://atlas.mappls.com/:path*" },
