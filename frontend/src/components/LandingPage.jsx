@@ -294,7 +294,7 @@ export default function LandingPage({}) {
                 <BarChart3 className="w-5 h-5" /> Pharma Markups Exposed
               </h3>
               <div className="h-64">
-                <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
+                <ResponsiveContainer width="100%" height={250} minWidth={0} minHeight={0}>
                   <BarChart data={priceComparisonData}>
                     <XAxis dataKey="name" fontSize={10} hide />
                     <YAxis hide />
@@ -318,7 +318,7 @@ export default function LandingPage({}) {
                 <Activity className="w-5 h-5" /> The Loot Trajectory
               </h3>
               <div className="h-64">
-                <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
+                <ResponsiveContainer width="100%" height={250} minWidth={0} minHeight={0}>
                   <LineChart data={overchargeTrendData}>
                     <XAxis dataKey="month" fontSize={10} stroke="#000" />
                     <YAxis hide />
@@ -341,7 +341,7 @@ export default function LandingPage({}) {
                 <PieChart className="w-5 h-5" /> Savings Breakdown
               </h3>
               <div className="h-64">
-                <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
+                <ResponsiveContainer width="100%" height={250} minWidth={0} minHeight={0}>
                   <RechartsPie>
                     <Pie data={savingsData} cx="50%" cy="50%" innerRadius={40} outerRadius={70} stroke="none" dataKey="value">
                       {savingsData.map((entry, index) => <Cell key={index} fill={entry.color} />)}

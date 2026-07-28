@@ -215,7 +215,7 @@ export default function Analytics({
                 </span>
               </div>
               <div className="h-[280px] w-full" style={{ minHeight: '280px' }}>
-                <ResponsiveContainer width="99.9%" height="100%" minWidth={0} minHeight={0}>
+                <ResponsiveContainer width="100%" height={260} minWidth={0} minHeight={0}>
                   <BarChart data={barData} barGap={6}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(141, 123, 104, 0.15)" vertical={false} />
                     <XAxis 
@@ -275,7 +275,7 @@ export default function Analytics({
               </div>
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="h-[280px] w-full md:w-[55%]" style={{ minHeight: '280px' }}>
-                  <ResponsiveContainer width="99.9%" height="100%" minWidth={0} minHeight={0}>
+                  <ResponsiveContainer width="100%" height={260} minWidth={0} minHeight={0}>
                     <PieChart>
                       <Pie
                         data={pieData}
@@ -337,7 +337,7 @@ export default function Analytics({
                 </div>
               </div>
               <div className="h-[220px] w-full" style={{ minHeight: '220px' }}>
-                <ResponsiveContainer width="99.9%" height="100%" minWidth={0} minHeight={0}>
+                <ResponsiveContainer width="100%" height={260} minWidth={0} minHeight={0}>
                   <LineChart data={lineData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(141, 123, 104, 0.15)" vertical={false} />
                     <XAxis dataKey="month" tick={{ fill: '#8D7B68', fontSize: 11 }} axisLine={{ stroke: '#C8B6A6/50' }} tickLine={false} />
@@ -364,7 +364,7 @@ export default function Analytics({
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#2563eb]/15 text-[#2563eb]">Yearly Goal</span>
               </div>
               <div className="h-[220px] w-full" style={{ minHeight: '220px' }}>
-                <ResponsiveContainer width="99.9%" height="100%" minWidth={0} minHeight={0}>
+                <ResponsiveContainer width="100%" height={260} minWidth={0} minHeight={0}>
                   <AreaChart data={areaData}>
                     <defs>
                       <linearGradient id="colorCumulative" x1="0" y1="0" x2="0" y2="1">

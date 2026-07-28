@@ -287,7 +287,7 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
               try {
                 login();
               } catch (e) {
-                console.warn('Direct login call error:', e);
+                console.warn('Google login error:', e);
                 handleDemoLogin('Google OAuth fallback');
               }
             }}
