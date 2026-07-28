@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Filter, ChevronLeft, ChevronRight, Download, Info } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Search, Filter, ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import CghsTable from '../components/CghsTable';
 import { getCghsProcedures, getClassifications } from '../services/cghs.service';
 import { trackEvent } from '../utils/analytics';
 
-// TODO: tweak page transition variants
 const pageVariants = {
   initial: { opacity: 0 },
   animate: { 
@@ -26,7 +25,7 @@ const itemVariants = {
 };
 
 export default function CghsRatesPage({ 
-  onLogout,currentPage 
+  onLogout, currentPage 
 }) {
   const [procedures, setProcedures] = useState([]);
   const [classifications, setClassifications] = useState([]);
@@ -82,25 +81,22 @@ export default function CghsRatesPage({
       initial="initial"
       animate="animate"
       variants={pageVariants}
-      className="min-h-screen bg-[#0a0a0b] text-white"
+      className="min-h-screen bg-background text-text-main transition-colors duration-300"
     >
       <Helmet>
-        <title>CGHS Rates Explorer | Sanjevani</title>
+        <title>CGHS Rates Explorer | Sanjeevani</title>
       </Helmet>
       
-      <Navbar 
-        onLogout={onLogout}
-        currentPage={currentPage} 
-      />
+      <Navbar onLogout={onLogout} currentPage={currentPage} />
 
-      <main className="pt-28 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+      <main className="pt-28 pb-12 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
         {/* Header Section */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent mb-4">
+        <motion.div variants={itemVariants} className="space-y-2">
+          <h1 className="text-4xl md:text-5xl font-bold font-serif text-text-main">
             CGHS Medical Procedure Rates
           </h1>
-          <p className="text-gray-400 text-lg flex items-center gap-2">
-            <Info className="w-5 h-5 text-teal-500" />
+          <p className="text-text-muted text-base md:text-lg flex items-center gap-2 font-medium">
+            <Info className="w-5 h-5 text-emerald-500 shrink-0" />
             Government-approved benchmark pricing reference for medical procedures.
           </p>
         </motion.div>
@@ -108,41 +104,41 @@ export default function CghsRatesPage({
         {/* Search and Filters */}
         <motion.div 
           variants={itemVariants}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4"
         >
           <div className="md:col-span-2 relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-teal-500 transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted group-focus-within:text-emerald-500 transition-colors" />
             <input 
               type="text"
               placeholder="Search by procedure name or code (e.g., Liver, LB124)..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-              className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-teal-500/50 transition-all backdrop-blur-sm"
+              className="w-full pl-12 pr-4 py-3.5 bg-card/60 border border-border/40 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition-all text-text-main placeholder:text-text-muted/60 backdrop-blur-md shadow-sm"
             />
           </div>
 
           <div className="relative group">
-            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-teal-500 transition-colors" />
+            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted group-focus-within:text-emerald-500 transition-colors" />
             <select 
               value={selectedClassification}
               onChange={(e) => { setSelectedClassification(e.target.value); setPage(1); }}
-              className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-teal-500/50 transition-all backdrop-blur-sm appearance-none cursor-pointer"
+              className="w-full pl-12 pr-4 py-3.5 bg-card/60 border border-border/40 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition-all text-text-main appearance-none cursor-pointer backdrop-blur-md shadow-sm font-medium"
             >
-              <option value="All">All Classifications</option>
+              <option value="All" className="bg-card text-text-main">All Classifications</option>
               {classifications.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
+                <option key={cat} value={cat} className="bg-card text-text-main">{cat}</option>
               ))}
             </select>
           </div>
 
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center justify-between backdrop-blur-sm">
-            <span className="text-gray-400 text-sm">Total Procedures</span>
-            <span className="text-2xl font-mono text-teal-400">{total.toLocaleString()}</span>
+          <div className="bg-card/60 border border-border/40 rounded-2xl p-4 flex items-center justify-between backdrop-blur-md shadow-sm">
+            <span className="text-text-muted text-sm font-medium">Total Procedures</span>
+            <span className="text-2xl font-mono font-bold text-emerald-600 dark:text-emerald-400">{total.toLocaleString()}</span>
           </div>
         </motion.div>
 
         {/* Table Section */}
-        <motion.div variants={itemVariants} className="min-h-[600px]">
+        <motion.div variants={itemVariants} className="min-h-[500px]">
           <CghsTable data={procedures} loading={loading} />
         </motion.div>
 
@@ -150,26 +146,26 @@ export default function CghsRatesPage({
         {totalPages > 1 && (
           <motion.div 
             variants={itemVariants}
-            className="mt-8 flex items-center justify-center gap-4"
+            className="flex items-center justify-center gap-4 pt-4"
           >
             <button 
               onClick={() => setPage(p => Math.max(1, p - 1))}
               disabled={page === 1 || loading}
-              className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              className="p-3 rounded-xl bg-card/60 border border-border/40 text-text-main hover:bg-card/90 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             
             <div className="flex items-center gap-2">
-              <span className="text-teal-400 font-mono text-lg font-bold">{page}</span>
-              <span className="text-gray-500">of</span>
-              <span className="text-gray-400 font-mono">{totalPages}</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-mono text-lg font-bold">{page}</span>
+              <span className="text-text-muted">of</span>
+              <span className="text-text-muted font-mono">{totalPages}</span>
             </div>
 
             <button 
               onClick={() => setPage(p => Math.min(totalPages, p + 1))}
               disabled={page === totalPages || loading}
-              className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              className="p-3 rounded-xl bg-card/60 border border-border/40 text-text-main hover:bg-card/90 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -177,19 +173,19 @@ export default function CghsRatesPage({
         )}
       </main>
 
-      <footer className="mt-20 py-12 px-4 border-t border-white/5 bg-[#050505]">
+      <footer className="mt-20 py-10 px-4 border-t border-border/40 bg-card/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-teal-500 flex items-center justify-center shadow-lg shadow-teal-500/20">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
               <span className="text-white font-bold">S</span>
             </div>
             <div>
-              <p className="text-white font-bold">Sanjevani</p>
-              <p className="text-gray-500 text-xs">Medical Bill Transparency Initiative</p>
+              <p className="text-text-main font-bold">Sanjeevani</p>
+              <p className="text-text-muted text-xs">Medical Bill Transparency Initiative</p>
             </div>
           </div>
-          <p className="text-gray-500 text-sm">
-            © 2024 Sanjevani. Benchmarked against official CGHS data.
+          <p className="text-text-muted text-sm">
+            © 2026 Sanjeevani. Benchmarked against official CGHS data.
           </p>
         </div>
       </footer>
