@@ -288,25 +288,15 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
                 login();
               } catch (e) {
                 console.warn('Direct login call error:', e);
-                handleDemoLogin('Google OAuth error');
+                handleDemoLogin('Google OAuth fallback');
               }
             }}
             whileHover={{ y: -2, boxShadow: '0 8px 25px rgba(0,0,0,0.1)' }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 px-6 flex items-center justify-center gap-3 rounded-xl font-medium text-[#1a1a1a] bg-white border border-[#e0e0e0] shadow-sm hover:shadow-md transition-all cursor-pointer mb-3"
+            className="w-full py-3.5 px-6 flex items-center justify-center gap-3 rounded-xl font-medium text-[#1a1a1a] bg-white border border-[#e0e0e0] shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
             <GoogleIcon />
             Continue with Google
-          </motion.button>
-
-          {/* Instant Demo Access Button */}
-          <motion.button
-            onClick={() => handleDemoLogin('Direct Guest Access')}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 px-6 flex items-center justify-center gap-2 rounded-xl font-semibold text-white bg-[#8D7B68] hover:bg-[#7a6a5a] shadow-md transition-all cursor-pointer"
-          >
-            🚀 Continue as Guest (Demo Login)
           </motion.button>
         </motion.div>
 
