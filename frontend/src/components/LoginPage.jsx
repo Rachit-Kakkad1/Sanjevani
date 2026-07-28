@@ -304,14 +304,10 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
             onClick={() => handleDemoLogin('Direct Guest Access')}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3.5 px-6 flex items-center justify-center gap-2 rounded-xl font-semibold text-white bg-[#8D7B68] hover:bg-[#7a6a5a] shadow-md transition-all cursor-pointer mb-4"
+            className="w-full py-3.5 px-6 flex items-center justify-center gap-2 rounded-xl font-semibold text-white bg-[#8D7B68] hover:bg-[#7a6a5a] shadow-md transition-all cursor-pointer"
           >
             🚀 Continue as Guest (Demo Login)
           </motion.button>
-
-          <p className="text-[11px] text-center text-[#8D7B68] bg-[#F5EFE7]/60 p-2.5 rounded-lg border border-[#8D7B68]/20">
-            💡 <strong>Note:</strong> Google Login requires a registered Google OAuth Client ID. Click <strong>Continue as Guest</strong> to test instantly!
-          </p>
         </motion.div>
 
         {/* Footer */}
