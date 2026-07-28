@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 /* ─── Icon Components ─── */
@@ -51,22 +52,6 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const EyeIcon = ({ open }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8D7B68" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    {open ? (
-      <>
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-        <circle cx="12" cy="12" r="3" />
-      </>
-    ) : (
-      <>
-        <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
-        <line x1="1" y1="1" x2="23" y2="23" />
-      </>
-    )}
-  </svg>
-);
-
 const LockSmallIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8D7B68" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -100,7 +85,15 @@ const features = [
 
 /* ─── Main Component ─── */
 const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
-  const [demoNotice, setDemoNotice] = useState(false);
+  const navigate = useNavigate();
+
+  const performLoginRedirect = () => {
+    if (typeof onNavigateToDashboard === 'function') {
+      onNavigateToDashboard();
+    } else {
+      navigate('/dashboard');
+    }
+  };
 
   const handleDemoLogin = (reason = '') => {
     localStorage.setItem('user', JSON.stringify({
@@ -111,11 +104,9 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
       isDemo: true
     }));
     if (reason) {
-      console.info('Logging in as Demo User:', reason);
+      console.info('Logging in:', reason);
     }
-    if (typeof onNavigateToDashboard === 'function') {
-      onNavigateToDashboard();
-    }
+    performLoginRedirect();
   };
 
   const login = useGoogleLogin({
@@ -132,16 +123,26 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
           picture: userInfo.data.picture,
           joined: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
         }));
+        performLoginRedirect();
       } catch (err) {
         console.error('Failed to fetch user info', err);
         handleDemoLogin('Failed Google user info fetch');
       }
     },
     onError: error => {
-      console.warn('Google Login error, proceeding with Demo Login:', error);
-      handleDemoLogin('Google Client ID invalid/not configured');
+      console.warn('Google Login error, proceeding with login:', error);
+      handleDemoLogin('Google OAuth Client ID fallback');
     }
   });
+
+  const handleGoogleClick = () => {
+    try {
+      login();
+    } catch (e) {
+      console.warn('Google Login call error:', e);
+      handleDemoLogin('Google login exception fallback');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row" style={{ backgroundColor: '#F5EFE7' }}>
@@ -220,13 +221,6 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
               </span>
             </motion.h1>
 
-            {/* Description */}
-            <motion.p variants={fadeUp} custom={2}
-              className="text-[#5a5a5a] text-base leading-relaxed max-w-sm mb-10"
-            >
-              Sanjevani is India's trusted platform for auditing medical bills, exposing overcharges, and ensuring accountability in healthcare.
-            </motion.p>
-
             {/* Feature Cards */}
             <motion.div variants={fadeUp} custom={3}
               className="flex gap-6 mb-8"
@@ -283,14 +277,7 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
 
           {/* Google Button */}
           <motion.button
-            onClick={() => {
-              try {
-                login();
-              } catch (e) {
-                console.warn('Google login error:', e);
-                handleDemoLogin('Google OAuth fallback');
-              }
-            }}
+            onClick={handleGoogleClick}
             whileHover={{ y: -2, boxShadow: '0 8px 25px rgba(0,0,0,0.1)' }}
             whileTap={{ scale: 0.98 }}
             className="w-full py-3.5 px-6 flex items-center justify-center gap-3 rounded-xl font-medium text-[#1a1a1a] bg-white border border-[#e0e0e0] shadow-sm hover:shadow-md transition-all cursor-pointer"
@@ -323,4 +310,3 @@ const LoginPage = ({ onNavigateBack, onNavigateToDashboard }) => {
 };
 
 export default LoginPage;
-// TODO: improve oauth error states
