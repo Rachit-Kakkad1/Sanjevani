@@ -16,7 +16,7 @@ const apiClient = axios.create({
   timeout: 4000
 });
 
-// Official CGHS Standalone Dataset (Fallback when backend is offline)
+// Official CGHS Standalone Dataset (Guaranteed fallback when DB is empty or API is offline)
 export const DEFAULT_CGHS_PROCEDURES = [
   { _id: 'cghs-1', code: 'LB086', canonicalName: 'Alanine Aminotransferase (ALT/SGPT)', nonNABH: 85, NABH: 100, superSpeciality: 100, classification: 'Laboratory' },
   { _id: 'cghs-2', code: 'LB087', canonicalName: 'Aspartate Aminotransferase (AST/SGOT)', nonNABH: 85, NABH: 100, superSpeciality: 100, classification: 'Laboratory' },
@@ -61,11 +61,11 @@ export const getCghsProcedures = async (params = {}) => {
     console.warn('[cghs.service] API call failed, using embedded CGHS procedures dataset');
   }
 
-  // Standalone Client Filter Fallback
+  // Standalone Client Filter Fallback (Executes whenever API fails or returns 0 records)
   const { search = '', classification = 'All', page = 1, limit = 20 } = params;
   let filtered = [...DEFAULT_CGHS_PROCEDURES];
 
-  if (search.trim()) {
+  if (search && search.trim()) {
     const q = search.toLowerCase().trim();
     filtered = filtered.filter(item =>
       item.canonicalName.toLowerCase().includes(q) ||
