@@ -19,7 +19,7 @@ async function callOCRService(filePath, filename, retryCount = 0) {
   const formData = new FormData();
   formData.append('file', fs.createReadStream(filePath), filename);
 
-  const ocrUrl = process.env.OCR_SERVICE_URL || 'http://localhost:8000/ocr/extract';
+  const ocrUrl = process.env.OCR_SERVICE_URL || 'https://rachit-ai-sanjeevani-ocr.hf.space/ocr/extract';
 
   try {
     const response = await axios.post(ocrUrl, formData, {
