@@ -104,25 +104,25 @@ export default function CghsRatesPage({
         {/* Search and Filters */}
         <motion.div 
           variants={itemVariants}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"
         >
-          <div className="md:col-span-2 relative group">
+          <div className="md:col-span-2 relative group flex items-center">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted group-focus-within:text-emerald-500 transition-colors z-10 pointer-events-none" />
             <input 
               type="text"
               placeholder="Search by procedure name or code (e.g., Liver, LB124)..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-              className="w-full pl-12 pr-4 py-3.5 bg-card border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition-all text-text-main placeholder:text-text-muted/60 shadow-sm font-medium"
+              className="w-full h-14 pl-12 pr-4 bg-card border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition-all text-text-main placeholder:text-text-muted/60 shadow-sm font-medium"
             />
           </div>
 
-          <div className="relative group">
+          <div className="relative group flex items-center">
             <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted group-focus-within:text-emerald-500 transition-colors z-10 pointer-events-none" />
             <select 
               value={selectedClassification}
               onChange={(e) => { setSelectedClassification(e.target.value); setPage(1); }}
-              className="w-full pl-12 pr-4 py-3.5 bg-card border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition-all text-text-main cursor-pointer shadow-sm font-medium"
+              className="w-full h-14 pl-12 pr-4 bg-card border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-500/40 transition-all text-text-main cursor-pointer shadow-sm font-medium"
             >
               <option value="All" className="bg-card text-text-main">All Classifications</option>
               {classifications.map(cat => (
@@ -131,7 +131,7 @@ export default function CghsRatesPage({
             </select>
           </div>
 
-          <div className="bg-card border border-border/50 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+          <div className="h-14 px-5 bg-card border border-border/50 rounded-2xl flex items-center justify-between shadow-sm">
             <span className="text-text-muted text-sm font-medium">Total Procedures</span>
             <span className="text-2xl font-mono font-bold text-emerald-600 dark:text-emerald-400">{total.toLocaleString()}</span>
           </div>
