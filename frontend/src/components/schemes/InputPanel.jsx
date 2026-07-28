@@ -1,4 +1,4 @@
-﻿import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Search, IndianRupee, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
@@ -12,8 +12,8 @@ const INDIAN_STATES = [
 ];
 
 export default function InputPanel({ onSearch, isLoading }) {
-  const [income, setIncome] = useState('');
-  const [state, setState] = useState('');
+  const [income, setIncome] = useState('40000');
+  const [state, setState] = useState('Gujarat');
 
   const handleIncomeChange = (e) => {
     const value = e.target.value.replace(/[^0-9]/g, '');
