@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Download, LayoutDashboard, FileText } from 'lucide-react';
+import { Download, FileText } from 'lucide-react';
 
 import Navbar from '../Navbar';
 import CurrentBillCard from '../upload/CurrentBillCard';
 import HistoryList from '../upload/HistoryList';
 import AnalyticsCharts from '../upload/AnalyticsCharts';
 import InsightsPanel from '../upload/InsightsPanel';
+import { getBillHistory } from '../../utils/api';
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -26,10 +27,7 @@ const itemVariants = {
   }
 };
 
-import { getBillHistory } from '../../utils/api';
-
-export default function ReportsPage({currentPage 
-}) {
+export default function ReportsPage({ onLogout, currentPage }) {
   const navigate = useNavigate();
   const [currentBill, setCurrentBill] = useState(null);
   const [history, setHistory] = useState([]);
@@ -39,15 +37,29 @@ export default function ReportsPage({currentPage
     const fetchAllData = async () => {
       try {
         setLoading(true);
-        const [savedBillStr, historyData] = await Promise.all([
-          Promise.resolve(localStorage.getItem('lastBill')),
-          getBillHistory()
-        ]);
-
+        const savedBillStr = localStorage.getItem('lastBill');
+        
         if (savedBillStr) {
-          setCurrentBill(JSON.parse(savedBillStr));
+          try {
+            setCurrentBill(JSON.parse(savedBillStr));
+          } catch (e) {
+            console.error('Failed to parse saved bill:', e);
+          }
         }
-        setHistory(historyData);
+
+        try {
+          const historyData = await getBillHistory();
+          if (Array.isArray(historyData)) {
+            setHistory(historyData);
+          }
+        } catch (apiErr) {
+          console.warn('Backend history unavailable, using stored bill:', apiErr);
+          if (savedBillStr) {
+            try {
+              setHistory([JSON.parse(savedBillStr)]);
+            } catch (e) {}
+          }
+        }
       } catch (err) {
         console.error('Failed to load reports data:', err);
       } finally {
@@ -67,83 +79,83 @@ export default function ReportsPage({currentPage
       initial="initial"
       animate="animate"
       variants={pageVariants}
-      className="min-h-screen"
+      className="min-h-screen relative"
       style={{ backgroundColor: '#E3D5CA' }}
     >
-      <Navbar 
-        onLogout={onLogout} currentPage={currentPage}
-      />
+      <Navbar onLogout={onLogout} currentPage={currentPage} />
 
-      <main className="pt-20 pb-10 px-4 md:px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div variants={itemVariants} className="mb-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-              <div>
-                <h1 className="text-xl md:text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-                  Analysis Reports
-                </h1>
-                <p className="text-xs text-[#8D7B68]">View your medical bill analysis results</p>
-              </div>
-              
-              <div className="flex gap-2">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => navigate('/upload')}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white cursor-pointer"
-                  style={{ backgroundColor: '#8D7B68' }}
-                >
-                  <FileText size={16} />
-                  New Upload
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium"
-                  style={{ 
-                    backgroundColor: 'rgba(255,255,255,0.6)',
-                    border: '1px solid rgba(141, 123, 104, 0.2)',
-                    color: '#8D7B68'
-                  }}
-                >
-                  <Download size={16} />
-                  Export
-                </motion.button>
-              </div>
+      <main className="pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+        <motion.div variants={itemVariants} className="mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold font-serif" style={{ color: '#1a1a1a' }}>
+                Medical Bill Audit Reports
+              </h1>
+              <p className="text-sm md:text-base text-[#8D7B68] mt-1 font-medium">
+                Comprehensive AI breakdown, overcharge flags, and CGHS price comparisons
+              </p>
             </div>
-          </motion.div>
+            
+            <div className="flex items-center gap-3">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => navigate('/upload')}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white shadow-md cursor-pointer"
+                style={{ backgroundColor: '#8D7B68' }}
+              >
+                <FileText size={18} />
+                Upload Another Bill
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => window.print()}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold bg-white/70 border border-[#8D7B68]/30 text-[#8D7B68] cursor-pointer shadow-sm"
+              >
+                <Download size={18} />
+                Export PDF Report
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
 
-          <motion.div variants={itemVariants} className="mb-6">
-            <CurrentBillCard bill={currentBill} />
-          </motion.div>
+        {/* Current Bill Summary & Itemized Audit */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <CurrentBillCard bill={currentBill} />
+        </motion.div>
 
-          <motion.div variants={itemVariants} className="mb-6">
-            <HistoryList 
-              onSelectBill={handleSelectBill} 
-              history={history} 
-              loading={loading} 
-            />
-          </motion.div>
-          
-          <motion.div variants={itemVariants} className="mb-6">
+        {/* History List */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <HistoryList 
+            onSelectBill={handleSelectBill} 
+            history={history} 
+            loading={loading} 
+          />
+        </motion.div>
+        
+        {/* Analytics Charts */}
+        {history.length > 0 && (
+          <motion.div variants={itemVariants} className="mb-8">
             <AnalyticsCharts bills={history} loading={loading} />
           </motion.div>
-          
+        )}
+        
+        {/* Insights Panel */}
+        {history.length > 0 && (
           <motion.div variants={itemVariants}>
             <InsightsPanel bills={history} loading={loading} />
           </motion.div>
-        </div>
+        )}
       </main>
 
-      <footer className="py-6 px-4 md:px-8 border-t border-[#C8B6A6]/30">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#8D7B68]">
-          <div className="flex items-center gap-2">
-            <span>Sanjevani - Medical Bill Audit Platform</span>
-          </div>
+      <footer className="py-6 px-4 md:px-8 border-t border-[#8D7B68]/20 bg-white/30 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#8D7B68] font-medium">
+          <div>Sanjevani — AI-Powered Medical Bill Advocacy Platform</div>
           <div className="flex items-center gap-4">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Contact</a>
+            <span>Encrypted Data Protection</span>
+            <span>•</span>
+            <span>Government Standard CGHS Pricing</span>
           </div>
         </div>
       </footer>
